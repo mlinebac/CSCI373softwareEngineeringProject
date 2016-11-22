@@ -1,4 +1,7 @@
-
+/**
+ * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
+ * @version Software Engineering Final Project
+ */
 
 import java.lang.Integer;
 
