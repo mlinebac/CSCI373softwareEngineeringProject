@@ -49,4 +49,44 @@ public class FamilyMember {
 	{
 		this.occupation = occupation;
 	}
+	
+	public String getName()
+	{
+		return this.name;
+	}
+	
+	public Integer getbirthDate()
+	{
+		return this.birthDate;
+	}
+	
+	public String getplaceofBirth()
+	{
+		return this.placeOfBirth;
+	}
+	
+	public Integer getdeathDate()
+	{
+		return this.deathDate;
+	}
+	
+	public String getplaceofDeath()
+	{
+		return this.placeOfDeath;
+	}
+	
+	public FamilyMember getparent1()
+	{
+		return this.parent1;
+	}
+	
+	public FamilyMember getparent2()
+	{
+		return this.parent2;
+	}
+	
+	public String getoccupation()
+	{
+		return this.occupation;
+	}
 }
