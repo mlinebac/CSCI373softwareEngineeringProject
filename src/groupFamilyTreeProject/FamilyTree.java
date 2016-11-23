@@ -1,3 +1,4 @@
+package groupFamilyTreeProject;
 
 
 public class FamilyTree {

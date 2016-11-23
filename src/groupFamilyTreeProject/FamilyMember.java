@@ -1,3 +1,4 @@
+package groupFamilyTreeProject;
 /**
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
  * @version Software Engineering Final Project
