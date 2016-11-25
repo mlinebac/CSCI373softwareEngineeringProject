@@ -2,19 +2,19 @@ package groupFamilyTreeProject;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
 import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 import javax.swing.JMenuBar;
 import javax.swing.JButton;
-import javax.swing.JTextPane;
 import javax.swing.JTextField;
-import java.awt.GridLayout;
-import javax.swing.JComboBox;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import javax.swing.JMenu;
 import net.miginfocom.swing.MigLayout;
-import javax.swing.JScrollBar;
 
 public class FamilyTreeGUI {
 
@@ -33,15 +33,12 @@ public class FamilyTreeGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame("Family Tree");
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(200, 100, 500, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[217px][][][][][][][]", "[236px]"));
-
 		JTree tree = new JTree();
+		tree.setEditable(true);
 		frame.getContentPane().add(tree, "cell 0 0 7 1,grow");
-
-		JScrollBar scrollBar = new JScrollBar();
-		frame.getContentPane().add(scrollBar, "cell 7 0,growy");
 
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -49,19 +46,95 @@ public class FamilyTreeGUI {
 		JMenu mnNewMenu = new JMenu("MENU");
 		menuBar.add(mnNewMenu);
 
-		JButton btnNewButton = new JButton("Add Person");
-		menuBar.add(btnNewButton);
+		JButton addPersonButton = new JButton("Add Person");
+		addPersonButton.addMouseListener(new MouseAdapter() {
 
-		JButton btnNewButton_1 = new JButton("Remove Person");
-		menuBar.add(btnNewButton_1);
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				addPersonButtonPressed(e);
+			}
 
-		JButton btnNewButton_2 = new JButton("Delete Tree");
-		menuBar.add(btnNewButton_2);
+			private void addPersonButtonPressed(MouseEvent e) {
+				int row = tree.getRowForLocation(e.getX(), e.getY());
+				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
+				if (row != -1) {
+					if (e.getClickCount() == 1) {
+						tree.startEditingAtPath(path);
+					}
+				}
+
+			}
+		});
+		menuBar.add(addPersonButton);
+
+		JButton removePersonButton = new JButton("Remove Person");
+		removePersonButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				removePersonButtonPressed(e);
+			}
+
+			private void removePersonButtonPressed(MouseEvent e) {
+				int row = tree.getRowForLocation(e.getX(), e.getY());
+				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
+				if (row != -1) {
+					if (e.getClickCount() == 1) {
+						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
+						if (node.getParent() != null) {
+							model.removeNodeFromParent(node);
+						}
+					}
+				}
+			}
+		});
+		menuBar.add(removePersonButton);
+
+		JButton deleteTreeButton = new JButton("Delete Tree");
+		deleteTreeButton.addMouseListener(new MouseAdapter(){
+			@Override
+			public void mouseClicked(MouseEvent e){
+				deleteTreeButtonPressed(e);
+			}
+			private void deleteTreeButtonPressed(MouseEvent e){
+				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+				model.setRoot(null);
+				model.reload();
+			}
+		});
+		menuBar.add(deleteTreeButton);
 
 		textField = new JTextField();
 		menuBar.add(textField);
 		textField.setColumns(10);
+		frame.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e){
+				personClicked(e);
+			}
+				private void personClicked(MouseEvent e){
+					int row = tree.getRowForLocation(e.getX(), e.getY());
+					DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+					TreePath path = tree.getPathForLocation(e.getX(), e.getY());
+					if (row != -1) {
+						if (e.getClickCount() == 1) {
+							DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
+							if (node.getParent() != null) {
+							//?????????????????	
+								
+							}
+						}
+					}
+					frame.getComponentAt(e.getX(), e.getY());
+				
+			}
+		});
 	}
+	public void MouseClicked (MouseEvent e){
+	
+			
+		}
+	
+	
 
 	/**
 	 * Launch the application.

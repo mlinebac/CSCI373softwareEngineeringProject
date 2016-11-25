@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JTree;
+import javax.swing.tree.TreePath;
 import javax.swing.JMenuBar;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
@@ -16,6 +17,8 @@ import javax.swing.JComboBox;
 import javax.swing.JMenu;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JScrollBar;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FamilyTreeApp {
 
@@ -40,17 +43,28 @@ public class FamilyTreeApp {
 		JTree tree = new JTree();
 		frame.getContentPane().add(tree, "cell 0 0 7 1,grow");
 		
-		JScrollBar scrollBar = new JScrollBar();
-		frame.getContentPane().add(scrollBar, "cell 7 0,growy");
-		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		
 		JMenu mnNewMenu = new JMenu("MENU");
 		menuBar.add(mnNewMenu);
 		
-		JButton btnNewButton = new JButton("Add Person");
-		menuBar.add(btnNewButton);
+		JButton addPerson = new JButton("Add Person");
+		addPerson.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				addPersonButtonPressed(e);
+			}
+
+			private void addPersonButtonPressed(MouseEvent e) {
+				TreePath tp = tree.getPathForLocation(e.getX(), e.getY());
+				if (tp != null)
+					textField_1.setText(tp.toString());
+				else
+					textField_1.setText("");
+			}
+		});
+		menuBar.add(addPerson);
 		
 		JButton btnNewButton_1 = new JButton("Remove Person");
 		menuBar.add(btnNewButton_1);

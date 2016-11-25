@@ -24,7 +24,7 @@ public class TreeFrame extends JPanel {
          
         rootNode = new DefaultMutableTreeNode("Root Node");
         treeModel = new DefaultTreeModel(rootNode);
-    treeModel.addTreeModelListener(new TreeFrameListner());
+        treeModel.addTreeModelListener(new TreeFrameListner());
         tree = new JTree(treeModel);
         tree.setEditable(true);
         tree.getSelectionModel().setSelectionMode
