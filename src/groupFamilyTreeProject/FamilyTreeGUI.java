@@ -1,5 +1,6 @@
 package groupFamilyTreeProject;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
 
@@ -16,7 +17,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JMenu;
-import net.miginfocom.swing.MigLayout;
+//import net.miginfocom.swing.MigLayout;
 
 public class FamilyTreeGUI {
 
@@ -40,7 +41,7 @@ public class FamilyTreeGUI {
 		frame.getContentPane().setLayout(new GridLayout(0,3));
 		JTree tree = new JTree();
 		tree.setEditable(true);
-		frame.getContentPane().add(tree, "cell 0 0 7 1,grow");
+		frame.getContentPane().add(tree, BorderLayout.CENTER);
 
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
