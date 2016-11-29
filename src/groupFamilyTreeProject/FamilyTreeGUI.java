@@ -1,6 +1,8 @@
 package groupFamilyTreeProject;
 
 import java.awt.EventQueue;
+import java.awt.GridLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -35,7 +37,7 @@ public class FamilyTreeGUI {
 		frame = new JFrame("Family Tree");
 		frame.setBounds(200, 100, 500, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[217px][][][][][][][]", "[236px]"));
+		frame.getContentPane().setLayout(new GridLayout(0,3));
 		JTree tree = new JTree();
 		tree.setEditable(true);
 		frame.getContentPane().add(tree, "cell 0 0 7 1,grow");
