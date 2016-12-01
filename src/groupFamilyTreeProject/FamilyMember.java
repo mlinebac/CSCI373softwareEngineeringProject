@@ -8,13 +8,13 @@ import java.lang.Integer;
 
 public class FamilyMember {
 
-	private final String name;
+	private final String name; // First and last name.
 	private final String birthDate;
 	private final String placeOfBirth;
 	private String deathDate;
 	private String placeOfDeath;
-	private FamilyMember parent1;
-	private FamilyMember parent2;
+	private FamilyMember parent1; // Parent displayed in diagram.
+	private String parent2; // Parent not displayed in diagram, had a relationship with displayed parent.
 	private String occupation;
 	
 	public FamilyMember(String name, String birthDate, String placeOfBirth)
@@ -44,7 +44,7 @@ public class FamilyMember {
 		this.parent1 = parent1;
 	}
 	
-	public void setParent2(FamilyMember parent2)
+	public void setParent2(String parent2)
 	{
 		this.parent2 = parent2;
 	}
@@ -53,7 +53,7 @@ public class FamilyMember {
 	{
 		this.occupation = occupation;
 	}
-	
+
 	public String getName()
 	{
 		return this.name;

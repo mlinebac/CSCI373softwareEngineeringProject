@@ -1,18 +1,13 @@
 package groupFamilyTreeProject;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.GridLayout;
+import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.text.*;
 import javax.swing.tree.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.JMenu;
 //import net.miginfocom.swing.MigLayout;
 
-public class FamilyTreeGUI {
+public class FamilyTreeGUI extends JPanel implements ActionListener{
 
 	private JFrame frame;
 	private JTextField textField;
@@ -42,6 +37,7 @@ public class FamilyTreeGUI {
 		JMenu mnNewMenu = new JMenu("MENU");
 		menuBar.add(mnNewMenu);
 
+		// Add person button and operation.
 		JButton addPersonButton = new JButton("Add Person");
 		addPersonButton.addMouseListener(new MouseAdapter() {
 
@@ -62,7 +58,8 @@ public class FamilyTreeGUI {
 			}
 		});
 		menuBar.add(addPersonButton);
-
+		
+		// Remove person button and operation.
 		JButton removePersonButton = new JButton("Remove Person");
 		removePersonButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -86,6 +83,7 @@ public class FamilyTreeGUI {
 		});
 		menuBar.add(removePersonButton);
 
+		// Delete tree button and operation.
 		JButton deleteTreeButton = new JButton("Delete Tree");
 		deleteTreeButton.addMouseListener(new MouseAdapter(){
 			@Override
@@ -99,6 +97,19 @@ public class FamilyTreeGUI {
 			}
 		});
 		menuBar.add(deleteTreeButton);
+		
+		// Print family tree button and operation.
+		JButton printTreeButton = new JButton("Print Tree");
+		printTreeButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e){
+				printTreeButtonPressed(e);
+			}
+			private void printTreeButtonPressed(MouseEvent e){
+				// INSERT CODE TO PRINT THE TREE DIAGRAM HERE
+			}
+		});
+		menuBar.add(printTreeButton);
 
 		textField = new JTextField();
 		menuBar.add(textField);
@@ -132,6 +143,21 @@ public class FamilyTreeGUI {
 	
 	
 
+	// Incomplete code for left side of the GUI, text fields that can be edited for each family member.
+	/*public FamilyMember FamilyMemberInformation(FamilyMember member){
+		setLayout(new BorderLayout());
+		JTextField nameField = new JTextField(member.getName(), 25); // Name field
+		nameField.setActionCommand(nameText);
+		nameField.addActionListener(this);
+		JTextField birthField = new JTextField(member.getBirthDate(), 25); // Birth date field
+		birthField.setActionCommand(birthText);
+		birthField.addActionListener(this);
+		JTextField deathField = new JTextField(member.getDeathDate(), 25); // Death date field
+		deathField.setActionCommand(deathText);
+		deathField.addActionListener(this);
+		onUse = new JLabel("Enter data");
+		onUse.setBorder(BorderFactory.createEmptyBorder(10,0,0,0));
+	}*/
 	/**
 	 * Launch the application.
 	 */
