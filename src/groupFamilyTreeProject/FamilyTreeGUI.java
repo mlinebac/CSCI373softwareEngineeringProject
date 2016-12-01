@@ -3,19 +3,12 @@ package groupFamilyTreeProject;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.GridLayout;
-
-import javax.swing.JFrame;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreePath;
-import javax.swing.JMenuBar;
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.text.*;
+import javax.swing.tree.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.JMenu;
 //import net.miginfocom.swing.MigLayout;
 
