@@ -9,34 +9,23 @@ import javax.swing.tree.*;
 
 public class FamilyTreeGUI extends JPanel implements ActionListener{
 
-	private JFrame frame;
-	private JTextField textField;
+	
+	
+	private FamilyTree familyTree;
 
 	/**
 	 * Create the application.
 	 */
 	public FamilyTreeGUI() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame("Family Tree");
-		frame.setBounds(200, 100, 500, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new GridLayout(0,3));
-		FamilyTree tree = new FamilyTree();
-		//tree.setEditable(true);
-		frame.getContentPane().add(tree, BorderLayout.CENTER);
-
-		JMenuBar menuBar = new JMenuBar();
-		frame.setJMenuBar(menuBar);
-
-		JMenu mnNewMenu = new JMenu("MENU");
-		menuBar.add(mnNewMenu);
-
+		super(new BorderLayout());
+		
+		//create the components
+		familyTree = new FamilyTree();
+		familyTree.setPreferredSize(new Dimension(300,50));
+		add(familyTree, BorderLayout.CENTER);
+		
+		JPanel panel = new JPanel (new GridLayout(0,4));
+	
 		// Add person button and operation.
 		JButton addPersonButton = new JButton("Add Person");
 		addPersonButton.addMouseListener(new MouseAdapter() {
@@ -47,7 +36,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			}
 
 			private void addPersonButtonPressed(MouseEvent e) {
-				int row = tree.getRowForLocation(e.getX(), e.getY());
+				int row = familyTree.getRowForLocation(e.getX(), e.getY());
 				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
@@ -57,8 +46,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 
 			}
 		});
-		menuBar.add(addPersonButton);
-		
+		panel.add(addPersonButton);
 		// Remove person button and operation.
 		JButton removePersonButton = new JButton("Remove Person");
 		removePersonButton.addMouseListener(new MouseAdapter() {
@@ -81,7 +69,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 				}
 			}
 		});
-		menuBar.add(removePersonButton);
+		panel.add(removePersonButton);
 
 		// Delete tree button and operation.
 		JButton deleteTreeButton = new JButton("Delete Tree");
@@ -96,7 +84,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 				model.reload();
 			}
 		});
-		menuBar.add(deleteTreeButton);
+		panel.add(deleteTreeButton);
 		
 		// Print family tree button and operation.
 		JButton printTreeButton = new JButton("Print Tree");
@@ -109,12 +97,10 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 				// INSERT CODE TO PRINT THE TREE DIAGRAM HERE
 			}
 		});
-		menuBar.add(printTreeButton);
-
-		textField = new JTextField();
-		menuBar.add(textField);
-		textField.setColumns(10);
-		frame.addMouseListener(new MouseAdapter(){
+		panel.add(printTreeButton);
+		add(panel,BorderLayout.NORTH);
+		
+		panel.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				personClicked(e);
 			}
@@ -131,11 +117,34 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 							}
 						}
 					}
-					frame.getComponentAt(e.getX(), e.getY());
+					panel.getComponentAt(e.getX(), e.getY());
 				
 			}
 		});
 	}
+	
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private static void initialize() {
+		//create and set up the window
+		JFrame frame = new JFrame("Family Tree");
+		frame.setBounds(300,500,600,600);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//Create and set up the content pane
+		FamilyTreeGUI paneForGUI = new FamilyTreeGUI();
+		paneForGUI.setOpaque(true);
+		frame.setContentPane(paneForGUI);
+		
+		//Displays the window
+		frame.pack();
+		frame.setVisible(true);
+	
+	}
+		
+		
 	public void MouseClicked (MouseEvent e){
 	
 			
@@ -162,15 +171,16 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FamilyTreeGUI window = new FamilyTreeGUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                initialize();
+            }
+        });
+    }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
