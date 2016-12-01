@@ -39,8 +39,8 @@ public class FamilyTreeGUI {
 		frame.setBounds(200, 100, 500, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new GridLayout(0,3));
-		JTree tree = new JTree();
-		tree.setEditable(true);
+		FamilyTree tree = new FamilyTree();
+		//tree.setEditable(true);
 		frame.getContentPane().add(tree, BorderLayout.CENTER);
 
 		JMenuBar menuBar = new JMenuBar();
