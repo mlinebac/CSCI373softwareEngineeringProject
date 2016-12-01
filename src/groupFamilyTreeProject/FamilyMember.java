@@ -9,15 +9,15 @@ import java.lang.Integer;
 public class FamilyMember {
 
 	private final String name;
-	private final Integer birthDate;
+	private final String birthDate;
 	private final String placeOfBirth;
-	private Integer deathDate;
+	private String deathDate;
 	private String placeOfDeath;
 	private FamilyMember parent1;
 	private FamilyMember parent2;
 	private String occupation;
 	
-	public FamilyMember(String name, Integer birthDate, String placeOfBirth)
+	public FamilyMember(String name, String birthDate, String placeOfBirth)
 	{
 		this.name = name;
 		this.birthDate = birthDate;
@@ -29,7 +29,7 @@ public class FamilyMember {
 		occupation = null;
 	}
 	
-	public void setDeathDate(Integer deathDate)
+	public void setDeathDate(String deathDate)
 	{
 		this.deathDate = deathDate;
 	}
@@ -59,7 +59,7 @@ public class FamilyMember {
 		return this.name;
 	}
 	
-	public Integer getbirthDate()
+	public String getbirthDate()
 	{
 		return this.birthDate;
 	}
@@ -69,7 +69,7 @@ public class FamilyMember {
 		return this.placeOfBirth;
 	}
 	
-	public Integer getdeathDate()
+	public String getdeathDate()
 	{
 		return this.deathDate;
 	}
