@@ -13,6 +13,12 @@ import javax.swing.tree.TreeSelectionModel;
 import javax.swing.event.TreeModelEvent;
 import javax.swing.event.TreeModelListener;
  
+/**
+ * 
+ * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
+ * @version 12/1/16
+ */
+
 public class TreeFrame extends JPanel {
     protected DefaultMutableTreeNode rootNode;
     protected DefaultTreeModel treeModel;

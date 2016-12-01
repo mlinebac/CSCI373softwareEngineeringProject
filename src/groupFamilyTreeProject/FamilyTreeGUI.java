@@ -7,10 +7,17 @@ import javax.swing.text.*;
 import javax.swing.tree.*;
 //import net.miginfocom.swing.MigLayout;
 
+/**
+ * CSCI 373: Software Engineering. Term Project. The purpose of this class is to create a graphic user interface. Through this 
+ * interface, the family tree can be viewed and edited. Includes operations for selecting a person in the family tree, add a 
+ * person, remove a person, delete the tree, and print the tree to a PDF file.
+ * 
+ * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
+ * @version 12/1/16
+ */
+
 public class FamilyTreeGUI extends JPanel implements ActionListener{
 
-	
-	
 	private FamilyTree familyTree;
 
 	/**
@@ -23,18 +30,26 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 		familyTree = new FamilyTree();
 		familyTree.setPreferredSize(new Dimension(300,50));
 		add(familyTree, BorderLayout.CENTER);
-		
-		JPanel panel = new JPanel (new GridLayout(0,4));
-	
-		// Add person button and operation.
+		JPanel panel = new JPanel (new GridLayout(0,4)); // Creates the area for adding graphical components.
+		// Declaration of buttons to be displayed at the top of the GUI.
 		JButton addPersonButton = new JButton("Add Person");
+		JButton removePersonButton = new JButton("Remove Person");
+		JButton deleteTreeButton = new JButton("Delete Tree");
+		JButton printTreeButton = new JButton("Print Tree");
+		// Implementation of the proper actions on the respective button being clicked.
 		addPersonButton.addMouseListener(new MouseAdapter() {
-
 			@Override
+			/**
+			 * Used to detect a mouse click on addPersonButton and calls the addPersonButtonPressed.
+			 * @param e Detected mouse operation.
+			 */
 			public void mouseClicked(MouseEvent e) {
 				addPersonButtonPressed(e);
 			}
-
+			/**
+			 * Button has been pressed, add person to the family tree.
+			 * @param e Detected mouse operation.
+			 */
 			private void addPersonButtonPressed(MouseEvent e) {
 				int row = familyTree.getRowForLocation(e.getX(), e.getY());
 				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
@@ -43,18 +58,21 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 						tree.startEditingAtPath(path);
 					}
 				}
-
 			}
 		});
-		panel.add(addPersonButton);
-		// Remove person button and operation.
-		JButton removePersonButton = new JButton("Remove Person");
 		removePersonButton.addMouseListener(new MouseAdapter() {
 			@Override
+			/**
+			 * Used to detect a mouse click on removePersonButton and calls removePersonButtonPressed.
+			 * @param e Detected mouse operation.
+			 */
 			public void mouseClicked(MouseEvent e) {
 				removePersonButtonPressed(e);
 			}
-
+			/**
+			 * Button has been pressed, remove clicked person from family tree (and thus their descendants).
+			 * @param e Detected mouse operation.
+			 */
 			private void removePersonButtonPressed(MouseEvent e) {
 				int row = tree.getRowForLocation(e.getX(), e.getY());
 				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
@@ -69,57 +87,76 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 				}
 			}
 		});
-		panel.add(removePersonButton);
-
-		// Delete tree button and operation.
-		JButton deleteTreeButton = new JButton("Delete Tree");
 		deleteTreeButton.addMouseListener(new MouseAdapter(){
 			@Override
+			/**
+			 * Used to detect a mouse click on deleteTreeButton and calls deleteTreeButtonPressed.
+			 * @param e Detected mouse operation.
+			 */
 			public void mouseClicked(MouseEvent e){
 				deleteTreeButtonPressed(e);
 			}
+			/**
+			 * Button has been pressed, delete the existing family tree with the default family tree.
+			 * @param e Detected mouse operation.
+			 */
 			private void deleteTreeButtonPressed(MouseEvent e){
 				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
 				model.setRoot(null);
 				model.reload();
 			}
 		});
-		panel.add(deleteTreeButton);
-		
-		// Print family tree button and operation.
-		JButton printTreeButton = new JButton("Print Tree");
 		printTreeButton.addMouseListener(new MouseAdapter() {
 			@Override
+			/**
+			 * Used to detect a mouse click on printTreeButton and calls printTreeButtonPressed.
+			 * @param e Detected mouse operation.
+			 */
 			public void mouseClicked(MouseEvent e){
 				printTreeButtonPressed(e);
 			}
+			/**
+			 * Button has been pressed, output the existing family tree to a PDF file within the base folder.
+			 * @param e Detected mouse operation.
+			 */
 			private void printTreeButtonPressed(MouseEvent e){
 				// INSERT CODE TO PRINT THE TREE DIAGRAM HERE
 			}
 		});
+		// Add created buttons into the GUI window.
+		panel.add(addPersonButton);
+		panel.add(removePersonButton);
+		panel.add(deleteTreeButton);
 		panel.add(printTreeButton);
-		add(panel,BorderLayout.NORTH);
 		
+		add(panel,BorderLayout.NORTH);
+		// Detect when a person within the family tree has been clicked.
 		panel.addMouseListener(new MouseAdapter(){
+			/**
+			 * Used to detect a mouse click on a person within the family tree.
+			 * @param e Detected mouse operation.
+			 */
 			public void mouseClicked(MouseEvent e){
 				personClicked(e);
 			}
-				private void personClicked(MouseEvent e){
-					int row = tree.getRowForLocation(e.getX(), e.getY());
-					DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
-					TreePath path = tree.getPathForLocation(e.getX(), e.getY());
-					if (row != -1) {
-						if (e.getClickCount() == 1) {
-							DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
-							if (node.getParent() != null) {
-							//?????????????????	
-								
+			/**
+			 * 
+			 * @param e Detected mouse operation.
+			 */
+			private void personClicked(MouseEvent e){
+				int row = tree.getRowForLocation(e.getX(), e.getY());
+				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
+				if (row != -1) {
+					if (e.getClickCount() == 1) {
+						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
+						if (node.getParent() != null) {
+							//?????????????????		
 							}
 						}
 					}
 					panel.getComponentAt(e.getX(), e.getY());
-				
-			}
+				}
 		});
 	}
 	
@@ -167,6 +204,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 		onUse = new JLabel("Enter data");
 		onUse.setBorder(BorderFactory.createEmptyBorder(10,0,0,0));
 	}*/
+	
 	/**
 	 * Launch the application.
 	 */

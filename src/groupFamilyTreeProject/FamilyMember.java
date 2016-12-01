@@ -1,7 +1,11 @@
 package groupFamilyTreeProject;
 /**
+ * CSCI 373: Software Engineering. Term Project. The purpose of this class is for its instances to act as an individual in the 
+ * family tree. This classes houses data on the name, parents, birth date, death date, and other data on all members within the 
+ * family tree.
+ * 
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
- * @version Software Engineering Final Project
+ * @version 12/1/16
  */
 
 import java.lang.Integer;

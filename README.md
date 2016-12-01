@@ -1,5 +1,3 @@
-# CSCI373softwareEngineeringProject
+# CSCI 373: Software Engineering Term Project
 
-read me
-
-SUP B****
+The purpose of this software is to allow users to create a family tree with a GUI windowed display. The program includes features to add people, remove people, delete the tree, and output the tree to a PDF file in the same base folder as this program. Data on people in the famil tree can be viewed on the right side of the GUI by clicking on the corresponding member in the diagram on the left.

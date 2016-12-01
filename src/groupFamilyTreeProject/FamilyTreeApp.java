@@ -20,6 +20,12 @@ import javax.swing.JScrollBar;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+/**
+ * 
+ * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
+ * @version 12/1/16
+ */
+
 public class FamilyTreeApp {
 
 	private JFrame frame;
