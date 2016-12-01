@@ -37,6 +37,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 		JMenu mnNewMenu = new JMenu("MENU");
 		menuBar.add(mnNewMenu);
 
+		// Add person button and operation.
 		JButton addPersonButton = new JButton("Add Person");
 		addPersonButton.addMouseListener(new MouseAdapter() {
 
@@ -57,7 +58,8 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			}
 		});
 		menuBar.add(addPersonButton);
-
+		
+		// Remove person button and operation.
 		JButton removePersonButton = new JButton("Remove Person");
 		removePersonButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -81,6 +83,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 		});
 		menuBar.add(removePersonButton);
 
+		// Delete tree button and operation.
 		JButton deleteTreeButton = new JButton("Delete Tree");
 		deleteTreeButton.addMouseListener(new MouseAdapter(){
 			@Override
@@ -94,6 +97,19 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			}
 		});
 		menuBar.add(deleteTreeButton);
+		
+		// Print family tree button and operation.
+		JButton printTreeButton = new JButton("Print Tree");
+		printTreeButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e){
+				printTreeButtonPressed(e);
+			}
+			private void printTreeButtonPressed(MouseEvent e){
+				// INSERT CODE TO PRINT THE TREE DIAGRAM HERE
+			}
+		});
+		menuBar.add(printTreeButton);
 
 		textField = new JTextField();
 		menuBar.add(textField);
