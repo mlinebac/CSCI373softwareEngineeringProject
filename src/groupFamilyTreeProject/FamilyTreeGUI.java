@@ -13,7 +13,7 @@ import javax.swing.tree.*;
  * person, remove a person, delete the tree, and print the tree to a PDF file.
  * 
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
- * @version 12/1/16
+ * @version 12/2/16
  */
 
 public class FamilyTreeGUI extends JPanel implements ActionListener{
@@ -30,12 +30,13 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 		familyTree = new FamilyTree();
 		familyTree.setPreferredSize(new Dimension(300,50));
 		add(familyTree, BorderLayout.CENTER);
-		JPanel panel = new JPanel (new GridLayout(0,4)); // Creates the area for adding graphical components.
+		JPanel panel = new JPanel (new GridLayout(0,5)); // Creates the area for adding graphical components.
 		// Declaration of buttons to be displayed at the top of the GUI.
 		JButton addPersonButton = new JButton("Add Person");
 		JButton removePersonButton = new JButton("Remove Person");
 		JButton deleteTreeButton = new JButton("Delete Tree");
 		JButton printTreeButton = new JButton("Print Tree");
+		JButton helpButton = new JButton("Help");
 		// Implementation of the proper actions on the respective button being clicked.
 		addPersonButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -123,12 +124,29 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 				// INSERT CODE TO PRINT THE TREE DIAGRAM HERE
 			}
 		});
+		helpButton.addMouseListener(new MouseAdapter() {
+			@Override
+			/**
+			 * Used to detect a mouse click on helpButton and calls helpButtonPressed.
+			 * @param e Detected mouse operation.
+			 */
+			public void mouseClicked(MouseEvent e){
+				helpButtonPressed(e);
+			}
+			/**
+			 * Button has been pressed, bring up help options.
+			 * @param e Detected mouse operation.
+			 */
+			private void helpButtonPressed(MouseEvent e){
+				// INSERT CODE TO PERFORM HELP OPERATION
+			}
+		});
 		// Add created buttons into the GUI window.
 		panel.add(addPersonButton);
 		panel.add(removePersonButton);
 		panel.add(deleteTreeButton);
 		panel.add(printTreeButton);
-		
+		panel.add(helpButton);
 		add(panel,BorderLayout.NORTH);
 		// Detect when a person within the family tree has been clicked.
 		panel.addMouseListener(new MouseAdapter(){
