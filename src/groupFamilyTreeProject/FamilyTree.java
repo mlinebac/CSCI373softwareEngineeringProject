@@ -10,6 +10,11 @@ import javax.swing.tree.TreeNode;
 public class FamilyTree extends JScrollPane implements TreeWillExpandListener {
 	
 	
+	/**
+	 * If we are using familyMember as a node, that class should replace the use of DefaultMutableTreeNode in this one?
+	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/tree/DefaultMutableTreeNode.html
+	 * @return
+	 */
 	public TreeNode addTreeNode(){
 		DefaultMutableTreeNode root;
 		DefaultMutableTreeNode grandparent;
@@ -17,6 +22,10 @@ public class FamilyTree extends JScrollPane implements TreeWillExpandListener {
 		grandparent = new DefaultMutableTreeNode("Ryans Father");
 		root.add(grandparent);
 		return root;
+	}
+	
+	public TreeNode editMember(FamilyMember edittedMember){
+		DefaultMutatbleTreeNode addedMember;
 	}
 	
 	public void removeMember(String Name, Integer birthDate, String placeOfBirth)

@@ -180,30 +180,26 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 	
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize size, closing, panes, and other features of the frame for the GUI (window).
 	 */
 	private static void initialize() {
-		//create and set up the window
+		// Create the window, set the size/location, and close operation.
 		JFrame frame = new JFrame("Family Tree");
 		frame.setBounds(300,500,600,600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//Create and set up the content pane
+		// Create and set up the content pane.
 		FamilyTreeGUI paneForGUI = new FamilyTreeGUI();
 		paneForGUI.setOpaque(true);
 		frame.setContentPane(paneForGUI);
-		
-		//Displays the window
+		//Display the window.
 		frame.pack();
 		frame.setVisible(true);
-	
 	}
 		
 		
 	public void MouseClicked (MouseEvent e){
-	
-			
-		}
+		
+	}
 	
 	
 

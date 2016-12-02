@@ -21,6 +21,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 /**
+ * CSCI 373: Software Engineering. Term Project.
  * 
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
  * @version 12/1/16
