@@ -7,26 +7,29 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.ExpandVetoException;
 import javax.swing.tree.TreeNode;
 
+/**
+ * CSCI 373: Software Engineering. Term Project. This class is used as a representation of the entirety of the family tree.
+ * 
+ * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
+ * @version 12/2/16
+ */
+
 public class FamilyTree extends JScrollPane implements TreeWillExpandListener {
 	
 	
 	/**
-	 * If we are using familyMember as a node, that class should replace the use of DefaultMutableTreeNode in this one?
+	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/tree/TreeNode.html
 	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/tree/DefaultMutableTreeNode.html
 	 * @return
 	 */
 	public TreeNode addTreeNode(){
-		DefaultMutableTreeNode root;
-		DefaultMutableTreeNode grandparent;
-		root = new DefaultMutableTreeNode("Ryan");
-		grandparent = new DefaultMutableTreeNode("Ryans Father");
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Ryan");
+		DefaultMutableTreeNode grandparent = new DefaultMutableTreeNode("Ryans Father");
 		root.add(grandparent);
 		return root;
 	}
 	
-	public TreeNode editMember(FamilyMember edittedMember){
-		DefaultMutatbleTreeNode addedMember;
-	}
+
 	
 	public void removeMember(String Name, Integer birthDate, String placeOfBirth)
 	{
