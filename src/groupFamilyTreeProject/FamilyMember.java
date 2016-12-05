@@ -8,14 +8,12 @@ package groupFamilyTreeProject;
  * @version 12/1/16
  */
 
-import java.lang.Integer;
-
 public class FamilyMember {
 
 	private final String name; // First and last name.
-	private final String birthDate;
-	private final String placeOfBirth;
-	private String deathDate;
+	private final String birthDate; // mm/dd/yyyy
+	private final String placeOfBirth; 
+	private String deathDate; // mm/dd/yyyy
 	private String placeOfDeath;
 	private FamilyMember parent1; // Parent displayed in diagram.
 	private String parent2; // Parent not displayed in diagram, had a relationship with displayed parent.
@@ -88,7 +86,7 @@ public class FamilyMember {
 		return this.parent1;
 	}
 	
-	public FamilyMember getparent2()
+	public String getparent2()
 	{
 		return this.parent2;
 	}
