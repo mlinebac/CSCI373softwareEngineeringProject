@@ -49,13 +49,14 @@ public class FamilyTree extends JPanel {
 	
 	
 	/**
+	 * 
 	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/tree/TreeNode.html
 	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/tree/DefaultMutableTreeNode.html
 	 * @return
 	 */
 	public TreeNode addTreeNode(){
 		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
-		MemberInfo ancestorChild = new MemberInfo("Ancestor's Child")
+		MemberInfo ancestorChild = new MemberInfo("Ancestor's Child");
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode(ancestor);
 		DefaultMutableTreeNode rootChild = new DefaultMutableTreeNode(ancestorChild);
 		root.add(rootChild);
@@ -83,12 +84,8 @@ public class FamilyTree extends JPanel {
 		
 	}
 	
-	public void toString(String Name, Integer birthDate, String placeOfBirth)
-	{
-		
-	}
 
-	@Override
+/**	@Override
 	public void treeWillExpand(TreeExpansionEvent event) throws ExpandVetoException {
 		// TODO Auto-generated method stub
 		
@@ -98,5 +95,5 @@ public class FamilyTree extends JPanel {
 	public void treeWillCollapse(TreeExpansionEvent event) throws ExpandVetoException {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 }
