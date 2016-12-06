@@ -3,7 +3,7 @@ package groupFamilyTreeProject;
 /**
  * Code based on the DynamicTreeDemo.
  * 
- * @author bosto
+ * @author Ryan
  * @version 12/5/2016
  */
 
