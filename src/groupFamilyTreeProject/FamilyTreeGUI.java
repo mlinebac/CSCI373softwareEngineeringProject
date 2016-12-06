@@ -75,7 +75,11 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 			 * @param e Detected mouse operation.
 			 */
 			private void removePersonButtonPressed(MouseEvent e) {
-				int row = familyTree.tree.getRowForLocation(e.getX(), e.getY());
+				familyTree.removeMember();
+				
+				// Old remove member code.
+				
+				/*int row = familyTree.tree.getRowForLocation(e.getX(), e.getY());
 				DefaultTreeModel model = (DefaultTreeModel) familyTree.tree.getModel();
 				TreePath path = familyTree.tree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
@@ -85,7 +89,7 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 							model.removeNodeFromParent(node);
 						}
 					}
-				}
+				}*/
 			}
 		});
 		deleteTreeButton.addMouseListener(new MouseAdapter(){
@@ -98,13 +102,11 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 				deleteTreeButtonPressed(e);
 			}
 			/**
-			 * Button has been pressed, delete the existing family tree with the default family tree.
+			 * Button has been pressed, delete the existing family tree.
 			 * @param e Detected mouse operation.
 			 */
 			private void deleteTreeButtonPressed(MouseEvent e){
-				DefaultTreeModel model = (DefaultTreeModel) familyTree.tree.getModel();
-				model.setRoot(null);
-				model.reload();
+				familyTree.deleteTree();
 			}
 		});
 		printTreeButton.addMouseListener(new MouseAdapter() {
