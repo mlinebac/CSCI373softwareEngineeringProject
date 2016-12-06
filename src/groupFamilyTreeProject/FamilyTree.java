@@ -1,5 +1,6 @@
 package groupFamilyTreeProject;
 
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
@@ -12,11 +13,40 @@ import javax.swing.tree.*;
  * @version 12/2/16
  */
 
-public class FamilyTree extends JScrollPane implements TreeWillExpandListener {
+public class FamilyTree extends JPanel {
 	
-	protected DefaultMutableTreeNode rootNode; // Root of the tree.
+	protected DefaultMutableTreeNode root; // Root of the tree.
 	protected DefaultTreeModel model; // The basis of the family tree.
 	protected JTree tree; // The entirety of the family tree.
+	
+
+	public FamilyTree(){
+		super(new GridLayout(1,0));
+		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
+		root = new DefaultMutableTreeNode(ancestor);
+		model = new DefaultTreeModel(root);
+		model.addTreeModelListener(new Listener());
+		tree = new JTree(model);
+		
+		// Change when text boxes are added?
+		tree.setEditable(true);
+
+		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+	}
+	
+	class Listener implements TreeModelListener{
+		public void treeNodesChanged(TreeModelEvent e){
+			DefaultMutableTreeNode node;
+			node = (DefaultMutableTreeNode)(e.getTreePath().getLastPathComponent());
+			int index = e.getChildIndices()[0];
+			node = (DefaultMutableTreeNode)(node.getChildAt(index));
+			System.out.println("Node editing complete: " + node.getUserObject());
+		}
+		public void treeNodesInserted(TreeModelEvent e){}
+		public void treeNodesRemoved(TreeModelEvent e){}
+		public void treeStructureChanged(TreeModelEvent e){}
+	}
+	
 	
 	/**
 	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/tree/TreeNode.html
