@@ -24,7 +24,8 @@ public class FamilyTree extends JScrollPane implements TreeWillExpandListener {
 	 * @return
 	 */
 	public TreeNode addTreeNode(){
-		DefaultMutableTreeNode root = new DefaultMutableTreeNode("Ryan");
+		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode();
 		DefaultMutableTreeNode grandparent = new DefaultMutableTreeNode("Ryans Father");
 		root.add(grandparent);
 		return root;

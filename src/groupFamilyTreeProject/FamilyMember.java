@@ -1,7 +1,7 @@
 package groupFamilyTreeProject;
 
-import javax.swing.tree.TreeNode;
-
+import javax.swing.JTree;
+import javax.swing.tree.*;
 /**
  * CSCI 373: Software Engineering. Term Project. The purpose of this class is for its instances to act as an individual in the 
  * family tree. This classes houses data on the name, parents, birth date, death date, and other data on all members within the 
@@ -11,7 +11,7 @@ import javax.swing.tree.TreeNode;
  * @version 12/1/16
  */
 
-public abstract class FamilyMember implements TreeNode {
+public class FamilyMember extends JPanel {
 
 	private final String name; // First and last name.
 	private final String birthDate; // mm/dd/yyyy
@@ -21,6 +21,28 @@ public abstract class FamilyMember implements TreeNode {
 	private FamilyMember parent1; // Parent displayed in diagram.
 	private String parent2; // Parent not displayed in diagram, had a relationship with displayed parent.
 	private String occupation;
+	
+	protected TreeNode ancestor; // The base of the family tree.
+	protected DefaultTreeModel compTree; // Default model of the family tree to be used.
+	protected JTree tree; // The tree to be used.
+	
+	public FamilyMember(){
+		super(new GridLayout(1,0));
+		
+		
+		treeNode temp = new treeNode();
+		temp.setName("First Known Ancestor");
+		ancestor = new DefaultMutableTreeNode(temp));
+		compTree = new DefaultTreeModel(ancestor);
+		compTree.addTreeModelListener(new MyTreeModelLstener());
+		tree = new JTree(treeModel);
+		
+		// Will this remain once the text boxes are added?
+		tree.setEditable(true);
+		
+		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		tree.setShowsRootHandles(true);
+	}
 	
 	public FamilyMember(String name, String birthDate, String placeOfBirth)
 	{
