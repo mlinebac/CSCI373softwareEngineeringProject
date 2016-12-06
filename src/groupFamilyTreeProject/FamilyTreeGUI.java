@@ -53,10 +53,10 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			 */
 			private void addPersonButtonPressed(MouseEvent e) {
 				int row = familyTree.getRowForLocation(e.getX(), e.getY());
-				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
+				TreePath path = familyTree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
-						tree.startEditingAtPath(path);
+						FamilyTree.startEditingAtPath(path);
 					}
 				}
 			}
@@ -75,9 +75,9 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			 * @param e Detected mouse operation.
 			 */
 			private void removePersonButtonPressed(MouseEvent e) {
-				int row = tree.getRowForLocation(e.getX(), e.getY());
-				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
-				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
+				int row = FamilyTree.getRowForLocation(e.getX(), e.getY());
+				DefaultTreeModel model = (DefaultTreeModel) FamilyTree.getModel();
+				TreePath path = FamilyTree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
 						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
@@ -102,7 +102,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			 * @param e Detected mouse operation.
 			 */
 			private void deleteTreeButtonPressed(MouseEvent e){
-				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+				DefaultTreeModel model = (DefaultTreeModel) FamilyTree.getModel();
 				model.setRoot(null);
 				model.reload();
 			}
@@ -162,9 +162,9 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			 * @param e Detected mouse operation.
 			 */
 			private void personClicked(MouseEvent e){
-				int row = tree.getRowForLocation(e.getX(), e.getY());
-				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
-				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
+				int row = FamilyTree.getRowForLocation(e.getX(), e.getY());
+				DefaultTreeModel model = (DefaultTreeModel) FamilyTree.getModel();
+				TreePath path = FamilyTree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
 						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
