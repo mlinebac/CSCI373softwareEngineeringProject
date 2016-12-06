@@ -13,7 +13,7 @@ import java.awt.*;
  * @version 12/1/16
  */
 
-public class FamilyMember extends JPanel {
+/* public class FamilyMember extends JPanel {
 
 	private final String name; // First and last name.
 	private final String birthDate; // mm/dd/yyyy
@@ -122,4 +122,4 @@ public class FamilyMember extends JPanel {
 	{
 		return this.occupation;
 	}
-}
+}*/

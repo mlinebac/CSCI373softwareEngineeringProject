@@ -28,8 +28,8 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 		
 		//create the components
 		familyTree = new FamilyTree();
-		familyTree.setPreferredSize(new Dimension(300,50));
-		add(familyTree, BorderLayout.CENTER);
+		familyTree.tree.setPreferredSize(new Dimension(300,50));
+		add(familyTree.tree, BorderLayout.CENTER);
 		JPanel panel = new JPanel (new GridLayout(0,5)); // Creates the area for adding graphical components.
 		// Declaration of buttons to be displayed at the top of the GUI.
 		JButton addPersonButton = new JButton("Add Person");
