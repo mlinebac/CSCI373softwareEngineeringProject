@@ -70,13 +70,14 @@ public class FamilyTree extends JPanel {
 		MemberInfo newChild = new MemberInfo(); // Default value for new node.
 		DefaultMutableTreeNode parent = null;
 		TreePath parentPath = tree.getSelectionPath();
-		if(parentPath == null) parent = rootNode;
+		if(parentPath == null) parent = root;
 		else parent = (DefaultMutableTreeNode)(parentPath.getLastPathComponent());
 		return add(parent, newChild);
 	}
 	
 	public DefaultMutableTreeNode add(DefaultMutableTreeNode parent, MemberInfo newChild){
-		DefaultMutableTreeNode 
+		//DefaultMutableTreeNode 
+		return null;
 	}
 	
 	public void removeMember(String Name, Integer birthDate, String placeOfBirth)
