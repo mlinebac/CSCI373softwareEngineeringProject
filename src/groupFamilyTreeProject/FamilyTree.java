@@ -32,6 +32,7 @@ public class FamilyTree extends JPanel {
 		tree.setEditable(true);
 
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+		tree.setShowsRootHandles(true);
 	}
 	
 	class Listener implements TreeModelListener{
@@ -46,8 +47,23 @@ public class FamilyTree extends JPanel {
 		public void treeNodesRemoved(TreeModelEvent e){}
 		public void treeStructureChanged(TreeModelEvent e){}
 	}
-	
-	
+	/**
+	 * Contains functionality for the "Delete Tree" button in the GUI.
+	 */
+	public void deleteTree(){
+		root.removeAllChildren();
+		model.reload();
+	}
+	/**
+	 * 
+	 */
+	public void removeMember(){
+		TreePath current = tree.getSelectionPath();
+		if(current != null){
+			DefaultMutableTreeNode node = (DefaultMutableTreeNode)(current.getLastPathComponent());
+			
+		}
+	}
 	/**
 	 * Does not have functionality at the moment...
 	 * 
