@@ -9,7 +9,7 @@ public class MemberInfo{
 	protected String placeOfDeath;
 	protected String parentHidden; // Parent not displayed in diagram, had a relationship with displayed parent.
 	protected String spouse1; // The name of the first individual that the member married and had children with.
-	protected String spouse2; // The name of the second individual that the member marrided and had children with.
+	protected String spouse2; // The name of the second individual that the member married and had children with.
 	protected String occupation;
 	
 	public MemberInfo(String name){
@@ -83,11 +83,6 @@ public class MemberInfo{
 	public String getPlaceOfDeath()
 	{
 		return this.placeOfDeath;
-	}
-	
-	public String getParentDisplayed()
-	{
-		return this.parentDisplayed.getName();
 	}
 	
 	public String getParentHidden()

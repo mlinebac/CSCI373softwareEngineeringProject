@@ -1,11 +1,8 @@
 package groupFamilyTreeProject;
 
-import javax.swing.JScrollPane;
-import javax.swing.event.TreeExpansionEvent;
-import javax.swing.event.TreeWillExpandListener;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.ExpandVetoException;
-import javax.swing.tree.TreeNode;
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.tree.*;
 
 /**
  * CSCI 373: Software Engineering. Term Project. This class is used as a representation of the entirety
@@ -17,6 +14,9 @@ import javax.swing.tree.TreeNode;
 
 public class FamilyTree extends JScrollPane implements TreeWillExpandListener {
 	
+	protected DefaultMutableTreeNode rootNode; // Root of the tree.
+	protected DefaultTreeModel model; // The basis of the family tree.
+	protected JTree tree; // The entirety of the family tree.
 	
 	/**
 	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/tree/TreeNode.html
@@ -25,13 +25,28 @@ public class FamilyTree extends JScrollPane implements TreeWillExpandListener {
 	 */
 	public TreeNode addTreeNode(){
 		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
-		DefaultMutableTreeNode root = new DefaultMutableTreeNode();
-		DefaultMutableTreeNode grandparent = new DefaultMutableTreeNode("Ryans Father");
-		root.add(grandparent);
+		MemberInfo ancestorChild = new MemberInfo("Ancestor's Child")
+		DefaultMutableTreeNode root = new DefaultMutableTreeNode(ancestor);
+		DefaultMutableTreeNode rootChild = new DefaultMutableTreeNode(ancestorChild);
+		root.add(rootChild);
 		return root;
 	}
 	
-
+	/*
+	 * Add a child to the selected node.
+	 */
+	public DefaultMutableTreeNode add(){
+		MemberInfo newChild = new MemberInfo(); // Default value for new node.
+		DefaultMutableTreeNode parent = null;
+		TreePath parentPath = tree.getSelectionPath();
+		if(parentPath == null) parent = rootNode;
+		else parent = (DefaultMutableTreeNode)(parentPath.getLastPathComponent());
+		return add(parent, newChild);
+	}
+	
+	public DefaultMutableTreeNode add(DefaultMutableTreeNode parent, MemberInfo newChild){
+		DefaultMutableTreeNode 
+	}
 	
 	public void removeMember(String Name, Integer birthDate, String placeOfBirth)
 	{
