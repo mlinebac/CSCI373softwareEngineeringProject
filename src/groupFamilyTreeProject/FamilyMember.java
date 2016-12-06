@@ -1,4 +1,7 @@
 package groupFamilyTreeProject;
+
+import javax.swing.tree.TreeNode;
+
 /**
  * CSCI 373: Software Engineering. Term Project. The purpose of this class is for its instances to act as an individual in the 
  * family tree. This classes houses data on the name, parents, birth date, death date, and other data on all members within the 
@@ -8,7 +11,7 @@ package groupFamilyTreeProject;
  * @version 12/1/16
  */
 
-public class FamilyMember {
+public abstract class FamilyMember implements TreeNode {
 
 	private final String name; // First and last name.
 	private final String birthDate; // mm/dd/yyyy
