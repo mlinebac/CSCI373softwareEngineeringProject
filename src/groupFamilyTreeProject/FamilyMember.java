@@ -1,7 +1,9 @@
 package groupFamilyTreeProject;
 
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.tree.*;
+import java.awt.*;
+
 /**
  * CSCI 373: Software Engineering. Term Project. The purpose of this class is for its instances to act as an individual in the 
  * family tree. This classes houses data on the name, parents, birth date, death date, and other data on all members within the 
@@ -32,7 +34,7 @@ public class FamilyMember extends JPanel {
 		
 		treeNode temp = new treeNode();
 		temp.setName("First Known Ancestor");
-		ancestor = new DefaultMutableTreeNode(temp));
+		ancestor = new DefaultMutableTreeNode(temp);
 		compTree = new DefaultTreeModel(ancestor);
 		compTree.addTreeModelListener(new MyTreeModelLstener());
 		tree = new JTree(treeModel);

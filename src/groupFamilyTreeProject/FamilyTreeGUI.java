@@ -3,9 +3,9 @@ package groupFamilyTreeProject;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.*;
-//import net.miginfocom.swing.MigLayout;
 
 /**
  * CSCI 373: Software Engineering. Term Project. The purpose of this class is to create a graphic user interface. Through this 
@@ -16,7 +16,7 @@ import javax.swing.tree.*;
  * @version 12/2/16
  */
 
-public class FamilyTreeGUI extends JPanel implements ActionListener{
+public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 
 	private FamilyTree familyTree;
 
@@ -39,7 +39,6 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 		JButton helpButton = new JButton("Help");
 		// Implementation of the proper actions on the respective button being clicked.
 		addPersonButton.addMouseListener(new MouseAdapter() {
-			@Override
 			/**
 			 * Used to detect a mouse click on addPersonButton and calls the addPersonButtonPressed.
 			 * @param e Detected mouse operation.
@@ -51,12 +50,13 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			 * Button has been pressed, add person to the family tree.
 			 * @param e Detected mouse operation.
 			 */
-			private void addPersonButtonPressed(MouseEvent e) {
-				int row = familyTree.getRowForLocation(e.getX(), e.getY());
-				TreePath path = familyTree.getPathForLocation(e.getX(), e.getY());
+			public void addPersonButtonPressed(MouseEvent e) {
+				int row = familyTree.tree.getRowForLocation(e.getX(), e.getY());
+				TreePath path = familyTree.tree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
-						familyTree.startEditingAtPath(path);
+						familyTree.tree.startEditingAtPath(path);
+
 					}
 				}
 			}
@@ -75,9 +75,9 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			 * @param e Detected mouse operation.
 			 */
 			private void removePersonButtonPressed(MouseEvent e) {
-				int row = familyTree.getRowForLocation(e.getX(), e.getY());
-				DefaultTreeModel model = (DefaultTreeModel) familyTree.getModel();
-				TreePath path = familyTree.getPathForLocation(e.getX(), e.getY());
+				int row = familyTree.tree.getRowForLocation(e.getX(), e.getY());
+				DefaultTreeModel model = (DefaultTreeModel) familyTree.tree.getModel();
+				TreePath path = familyTree.tree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
 						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
@@ -102,7 +102,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			 * @param e Detected mouse operation.
 			 */
 			private void deleteTreeButtonPressed(MouseEvent e){
-				DefaultTreeModel model = (DefaultTreeModel) familyTree.getModel();
+				DefaultTreeModel model = (DefaultTreeModel) familyTree.tree.getModel();
 				model.setRoot(null);
 				model.reload();
 			}
@@ -162,9 +162,9 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 			 * @param e Detected mouse operation.
 			 */
 			private void personClicked(MouseEvent e){
-				int row = familyTree.getRowForLocation(e.getX(), e.getY());
-				DefaultTreeModel model = (DefaultTreeModel) familyTree.getModel();
-				TreePath path = familyTree.getPathForLocation(e.getX(), e.getY());
+				int row = familyTree.tree.getRowForLocation(e.getX(), e.getY());
+				DefaultTreeModel model = (DefaultTreeModel) familyTree.tree.getModel();
+				TreePath path = familyTree.tree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
 						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
@@ -224,15 +224,11 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 	 */
 	public static void main(String[] args) {
 		
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                initialize();
-            }
-        });
+		javax.swing.SwingUtilities.invokeLater(() -> initialize());
     }
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+
+    @Override
+    public void valueChanged(TreeSelectionEvent e) {
+
+    }
 }
