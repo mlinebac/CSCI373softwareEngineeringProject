@@ -34,7 +34,11 @@ public class FamilyTree extends JPanel {
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
 	}
-	
+	/**
+	 * 
+	 * @author bosto
+	 * @version 12/6/16
+	 */
 	class Listener implements TreeModelListener{
 		public void treeNodesChanged(TreeModelEvent e){
 			DefaultMutableTreeNode node;
@@ -48,21 +52,36 @@ public class FamilyTree extends JPanel {
 		public void treeStructureChanged(TreeModelEvent e){}
 	}
 	/**
-	 * Contains functionality for the "Delete Tree" button in the GUI.
+	 * Contains functionality for the "Remove Person" button in the GUI.
+	 */
+	public void removeMember(){
+		TreePath current = tree.getSelectionPath();
+		if(current != null){ // Current family member exists in the family tree.
+			DefaultMutableTreeNode tempNode = (DefaultMutableTreeNode)(current.getLastPathComponent());
+			MutableTreeNode parent = (MutableTreeNode)(tempNode.getParent());
+			if(parent != null){ // Current member has an existing parent in the family tree.
+				model.removeNodeFromParent(tempNode); // Delete the designated member.
+			}
+		}
+	}
+	/**
+	 * Contains functionality for the "Delete Tree" button in the GUI using existing methods of Javax.
 	 */
 	public void deleteTree(){
 		root.removeAllChildren();
 		model.reload();
 	}
 	/**
-	 * 
+	 * Contains functionality for the "Print Tree" button in the GUI.
 	 */
-	public void removeMember(){
-		TreePath current = tree.getSelectionPath();
-		if(current != null){
-			DefaultMutableTreeNode node = (DefaultMutableTreeNode)(current.getLastPathComponent());
-			
-		}
+	public void printTree(){
+		// Code goes here to print the tree.
+	}
+	/**
+	 * Contains functionality for the "Help" button in the GUI.
+	 */
+	public void help(){
+		// Code to respond to user's need for help goes here.
 	}
 	/**
 	 * Does not have functionality at the moment...
