@@ -8,7 +8,8 @@ import javax.swing.tree.ExpandVetoException;
 import javax.swing.tree.TreeNode;
 
 /**
- * CSCI 373: Software Engineering. Term Project. This class is used as a representation of the entirety of the family tree.
+ * CSCI 373: Software Engineering. Term Project. This class is used as a representation of the entirety
+ * of the family tree.
  * 
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
  * @version 12/2/16
