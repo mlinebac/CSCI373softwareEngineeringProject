@@ -26,17 +26,28 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 	public FamilyTreeGUI() {
 		super(new BorderLayout());
 		
-		//create the components
-		familyTree = new FamilyTree();
-		familyTree.tree.setPreferredSize(new Dimension(300,50));
-		add(familyTree.tree, BorderLayout.CENTER);
-		JPanel panel = new JPanel (new GridLayout(0,5)); // Creates the area for adding graphical components.
+
 		// Declaration of buttons to be displayed at the top of the GUI.
 		JButton addPersonButton = new JButton("Add Person");
 		JButton removePersonButton = new JButton("Remove Person");
 		JButton deleteTreeButton = new JButton("Delete Tree");
 		JButton printTreeButton = new JButton("Print Tree");
 		JButton helpButton = new JButton("Help");
+		// Add created buttons into the GUI window.
+		JPanel panel = new JPanel (new GridLayout(0,5)); // Creates the area for adding graphical components.
+		panel.add(addPersonButton);
+		panel.add(removePersonButton);
+		panel.add(deleteTreeButton);
+		panel.add(printTreeButton);
+		panel.add(helpButton);
+
+		//create the tree
+		familyTree = new FamilyTree();
+		addFamilyMembersToTree(familyTree);
+		JTree tree = familyTree.tree;
+		tree.setPreferredSize(new Dimension(300,50));
+		add(tree, BorderLayout.CENTER);
+		add(panel,BorderLayout.NORTH);
 		// Implementation of the proper actions on the respective button being clicked.
 		addPersonButton.addMouseListener(new MouseAdapter() {
 			/**
@@ -143,13 +154,7 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 				// INSERT CODE TO PERFORM HELP OPERATION
 			}
 		});
-		// Add created buttons into the GUI window.
-		panel.add(addPersonButton);
-		panel.add(removePersonButton);
-		panel.add(deleteTreeButton);
-		panel.add(printTreeButton);
-		panel.add(helpButton);
-		add(panel,BorderLayout.NORTH);
+
 		// Detect when a person within the family tree has been clicked.
 		panel.addMouseListener(new MouseAdapter(){
 			/**
@@ -179,7 +184,15 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 				}
 		});
 	}
-	
+
+	private void addFamilyMembersToTree(FamilyTree familyTree) {
+
+		DefaultMutableTreeNode parent;
+		parent = (DefaultMutableTreeNode) familyTree.addTreeNode().getParent();
+		familyTree.add(parent, "parent 1");
+
+	}
+
 
 	/**
 	 * Initialize size, closing, panes, and other features of the frame for the GUI (window).

@@ -13,7 +13,7 @@ import javax.swing.tree.*;
  * @version 12/2/16
  */
 
-public class FamilyTree extends JPanel {
+public class FamilyTree extends JTree {
 	
 	protected DefaultMutableTreeNode root; // Root of the tree.
 	protected DefaultTreeModel model; // The basis of the family tree.
@@ -21,18 +21,18 @@ public class FamilyTree extends JPanel {
 	
 
 	public FamilyTree(){
-		super(new GridLayout(1,0));
-		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
-		root = new DefaultMutableTreeNode(ancestor);
+
+		//MemberInfo ancestor;
+		//ancestor = new MemberInfo("First Known Ancestor");
+		root = new DefaultMutableTreeNode("First Known Ancestor");
 		model = new DefaultTreeModel(root);
-		model.addTreeModelListener(new Listener());
+		//model.addTreeModelListener(new Listener());
 		tree = new JTree(model);
-		
 		// Change when text boxes are added?
 		tree.setEditable(true);
-
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
+
 	}
 	/**
 	 * 
@@ -102,7 +102,7 @@ public class FamilyTree extends JPanel {
 	/*
 	 * Add a child to the selected node.
 	 */
-	public DefaultMutableTreeNode add(){
+	public DefaultMutableTreeNode add(DefaultMutableTreeNode parent, String parentName){
 		MemberInfo newChild = new MemberInfo(); // Default value for new node.
 		DefaultMutableTreeNode parent = null;
 		TreePath parentPath = tree.getSelectionPath();
