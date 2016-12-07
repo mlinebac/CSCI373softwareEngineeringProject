@@ -102,9 +102,9 @@ public class FamilyTree extends JTree {
 	/*
 	 * Add a child to the selected node.
 	 */
-	public DefaultMutableTreeNode add(DefaultMutableTreeNode parent, String parentName){
+	public DefaultMutableTreeNode add(DefaultMutableTreeNode root, String parentName){
 		MemberInfo newChild = new MemberInfo(); // Default value for new node.
-		DefaultMutableTreeNode parent = null;
+		DefaultMutableTreeNode parent;
 		TreePath parentPath = tree.getSelectionPath();
 		if(parentPath == null) parent = root;
 		else parent = (DefaultMutableTreeNode)(parentPath.getLastPathComponent());
