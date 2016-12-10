@@ -27,17 +27,8 @@ public class FamilyTree extends JTree {
 
 
 	public FamilyTree(){
-
-	
-
-		
-
-
 		MemberInfo ancestor;
-
 		ancestor = new MemberInfo("First Known Ancestor");
-
-		
 		root = new DefaultMutableTreeNode(ancestor);
 		model = new DefaultTreeModel(root);
 		model.addTreeModelListener(new Listener());
