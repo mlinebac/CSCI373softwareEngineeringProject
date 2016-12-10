@@ -1,6 +1,5 @@
 package groupFamilyTreeProject;
 
-import java.awt.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -99,16 +98,13 @@ public class FamilyTree extends JTree {
 				writer.write("Occupation " + convertedMembers[i].getOccupation() + ".");
 				writer.write("\n");
 			}
+			
+			writer.close();
 		}
 		catch(IOException e)
 		{
-			
+			// needs message and a way to start over.
 		}
-		
-		//create txt file
-		
-		// write to txt file
-		
 	}
 	/**
 	 * Contains functionality for the "Help" button in the GUI.
@@ -149,13 +145,17 @@ public class FamilyTree extends JTree {
 		return null;
 	}
 	
+	/* 
+	 * needs to be called in the add methods so an instance 
+	 * of the MemberInfo class is created
+	 */
 	public void createMember(String name)
 	{
 		MemberInfo member = new MemberInfo(name);
 		members.add(member);
 	}
 
-/**	@Override
+/*	@Override
 	public void treeWillExpand(TreeExpansionEvent event) throws ExpandVetoException {
 		// TODO Auto-generated method stub
 		
