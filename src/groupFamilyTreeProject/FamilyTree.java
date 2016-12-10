@@ -16,7 +16,7 @@ import javax.swing.tree.*;
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
  * @version 12/2/16
  */
-
+//testing merge
 public class FamilyTree extends JTree {
 	
 	protected DefaultMutableTreeNode root; // Root of the tree.

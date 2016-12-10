@@ -5,7 +5,7 @@ package groupFamilyTreeProject;
  * as an object to be used as a parameter for new DefaultMutableTreeNode 
  * nodes, which represent every individual in the tree and therefore 
  * formats the structure of the tree. Instances of this class will contain
- * information on the individual for use in the text boxes on the right 
+ * information on the individual for use in the text boxes on the right
  * side of the GUI and the name of the individual in the family tree on the
  * left side of the GUI.
  * 
