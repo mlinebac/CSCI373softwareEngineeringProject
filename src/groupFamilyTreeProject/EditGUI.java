@@ -13,16 +13,6 @@ import javax.swing.text.*;
 
 
 public class EditGUI extends JPanel implements ActionListener{
-/*	private String[] nameText = {"Name", 
-	private String birthDateText = "Birth Date";
-	private String birthPlaceText = "Birth Place";
-	private String deathDateText = "Death Date";
-	private String deathPlaceText = "Death Place";
-	private String parentText = "Other Parent";
-	private String spouse1Text = "First Spouse";
-	private String spouse2Text = "Second Spouse";
-	private String occupationText = "Occupation";
-*/	
 	private MemberInfo tempMember;
 	private String[] boxText = {"Birth Date", "Birth Place", "Death Date", "Death Place", "Other Parent", "First Spouse", "Second Spouse", "Occupation"};
 	public  void createEditWindow(MemberInfo member){
@@ -58,7 +48,7 @@ public class EditGUI extends JPanel implements ActionListener{
 		GridBagLayout grid = new GridBagLayout();
 		GridBagConstraints con = new GridBagConstraints();
 		textPane.setLayout(grid);
-		addTextRows(labels, boxText, grid, textPane);
+		addTextRows(labels, fields, grid, textPane);
 		con.gridwidth = GridBagConstraints.REMAINDER;
 		con.anchor = GridBagConstraints.EAST;
 		con.weightx = 1.0;
@@ -94,26 +84,20 @@ public class EditGUI extends JPanel implements ActionListener{
 		else { // Set occupation, only remaining possibility.
 			tempMember.setOccupation(entry.getText());
 		}
-		
-		
-		
-		
 	}
-	private void addTextRows(JLabel[] labels, GridBagLayout grid, Container con){
-	      GridBagConstraints c = new GridBagConstraints();
-	        c.anchor = GridBagConstraints.EAST;
-	        int numLabels = labels.length;
-	        for (int i = 0; i < numLabels; i++) {
-	            c.gridwidth = GridBagConstraints.RELATIVE; //next-to-last
-	            c.fill = GridBagConstraints.NONE;      //reset to default
-	            c.weightx = 0.0;                       //reset to default
-	            con.add(labels[i], c);
-	            c.gridwidth = GridBagConstraints.REMAINDER;     //end row
-	            c.fill = GridBagConstraints.HORIZONTAL;
-	            c.weightx = 1.0;
-	            con.add(boxText[i], c);
-	        }
-	    }
+	private void addTextRows(JLabel[] labels, JTextField[] fields, GridBagLayout grid, Container con){
+		GridBagConstraints c = new GridBagConstraints();
+		c.anchor = GridBagConstraints.EAST;
+		for (int i = 0; i < labels.length; i++) {
+			c.gridwidth = GridBagConstraints.RELATIVE;
+			c.fill = GridBagConstraints.NONE;	
+			c.weightx = 0.0;
+			con.add(labels[i], c);
+			c.gridwidth = GridBagConstraints.REMAINDER;
+			c.fill = GridBagConstraints.HORIZONTAL;
+			c.weightx = 1.0;
+			con.add(fields[i], c);
+		}
 	}
 	public MemberInfo doEverything(MemberInfo member){
 		

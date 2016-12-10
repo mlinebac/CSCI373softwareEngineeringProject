@@ -26,11 +26,10 @@ public class FamilyTree extends JTree {
 
 	public FamilyTree(){
 
-		//MemberInfo ancestor;
-		//ancestor = new MemberInfo("First Known Ancestor");
-		root = new DefaultMutableTreeNode("First Known Ancestor");
+		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
+		root = new DefaultMutableTreeNode(ancestor);
 		model = new DefaultTreeModel(root);
-		//model.addTreeModelListener(new Listener());
+		model.addTreeModelListener(new Listener());
 		tree = new JTree(model);
 		// Change when text boxes are added?
 		tree.setEditable(true);
