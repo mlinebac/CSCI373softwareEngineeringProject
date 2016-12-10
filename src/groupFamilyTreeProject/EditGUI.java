@@ -11,7 +11,7 @@ import javax.swing.text.*;
  *
  */
 
-
+/*
 public class EditGUI extends JPanel implements ActionListener{
 	private String[] nameText = {"Name",
 	private String birthDateText = "Birth Date";
@@ -119,3 +119,4 @@ public class EditGUI extends JPanel implements ActionListener{
 		return this.tempMember;
 	}
 
+*/
