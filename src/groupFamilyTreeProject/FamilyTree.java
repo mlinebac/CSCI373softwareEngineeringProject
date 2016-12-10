@@ -1,6 +1,9 @@
 package groupFamilyTreeProject;
 
-import java.awt.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
@@ -18,6 +21,7 @@ public class FamilyTree extends JTree {
 	protected DefaultMutableTreeNode root; // Root of the tree.
 	protected DefaultTreeModel model; // The basis of the family tree.
 	protected JTree tree; // The entirety of the family tree.
+	protected ArrayList<MemberInfo> members = new ArrayList<MemberInfo>();
 	
 
 	public FamilyTree(){
@@ -75,7 +79,32 @@ public class FamilyTree extends JTree {
 	 * Contains functionality for the "Print Tree" button in the GUI.
 	 */
 	public void printTree(){
-		// Code goes here to print the tree.
+		// need to get a filename from the user
+		String fileName = null;
+		MemberInfo[] convertedMembers = (MemberInfo[]) members.toArray();
+		FileWriter writer = null;
+		
+		try
+		{
+			writer = new FileWriter(fileName, true);
+			
+			for(int i = 0; i < convertedMembers.length; i++)
+			{
+				writer.write("Name: " + convertedMembers[i].getName() + ".");
+				writer.write("DOB: " + convertedMembers[i].getBirthDate());
+				writer.write("Birth Place: " + convertedMembers[i].getPlaceOfBirth() + ".");
+				writer.write("DOD: " + convertedMembers[i].getDeathDate() + ".");
+				writer.write("Place of Death: " + convertedMembers[i].getPlaceOfDeath() + ".");
+				writer.write("Occupation " + convertedMembers[i].getOccupation() + ".");
+				writer.write("\n");
+			}
+			
+			writer.close();
+		}
+		catch(IOException e)
+		{
+			// needs message and a way to start over.
+		}
 	}
 	/**
 	 * Contains functionality for the "Help" button in the GUI.
@@ -116,13 +145,17 @@ public class FamilyTree extends JTree {
 		return null;
 	}
 	
-	public void removeMember(String Name, Integer birthDate, String placeOfBirth)
+	/* 
+	 * needs to be called in the add methods so an instance 
+	 * of the MemberInfo class is created
+	 */
+	public void createMember(String name)
 	{
-		
+		MemberInfo member = new MemberInfo(name);
+		members.add(member);
 	}
-	
 
-/**	@Override
+/*	@Override
 	public void treeWillExpand(TreeExpansionEvent event) throws ExpandVetoException {
 		// TODO Auto-generated method stub
 		
