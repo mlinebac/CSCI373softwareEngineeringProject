@@ -25,11 +25,8 @@ public class FamilyTree extends JTree {
 	protected ArrayList<MemberInfo> members = new ArrayList<MemberInfo>();
 	
 
+
 	public FamilyTree(){
-
-
-		
-
 		MemberInfo ancestor;
 		ancestor = new MemberInfo("First Known Ancestor");
 		root = new DefaultMutableTreeNode(ancestor);
@@ -40,9 +37,6 @@ public class FamilyTree extends JTree {
 		tree.setEditable(true);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
-
-
-
 	}
 	/**
 	 * 
