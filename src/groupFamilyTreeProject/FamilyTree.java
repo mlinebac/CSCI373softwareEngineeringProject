@@ -94,7 +94,10 @@ public class FamilyTree extends JTree {
 				writer.write("Name: " + convertedMembers[i].getName() + ".");
 				writer.write("DOB: " + convertedMembers[i].getBirthDate());
 				writer.write("Birth Place: " + convertedMembers[i].getPlaceOfBirth() + ".");
-				wirter.write("DOD: " + )
+				writer.write("DOD: " + convertedMembers[i].getDeathDate() + ".");
+				writer.write("Place of Death: " + convertedMembers[i].getPlaceOfDeath() + ".");
+				writer.write("Occupation " + convertedMembers[i].getOccupation() + ".");
+				writer.write("\n");
 			}
 		}
 		catch(IOException e)
