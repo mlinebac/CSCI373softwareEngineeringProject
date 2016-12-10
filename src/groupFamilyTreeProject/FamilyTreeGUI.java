@@ -18,14 +18,17 @@ import javax.swing.tree.*;
 
 public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 
-	private FamilyTree familyTree;
+	private FamilyTree tree;
 
 	/**
 	 * Create the application.
 	 */
 	public FamilyTreeGUI() {
 		super(new BorderLayout());
-		
+		//create the tree
+		tree = new FamilyTree();
+		tree.setPreferredSize(new Dimension(300,50));
+		add(tree, BorderLayout.CENTER);
 
 		// Declaration of buttons to be displayed at the top of the GUI.
 		JButton addPersonButton = new JButton("Add Person");
@@ -40,19 +43,10 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 		panel.add(deleteTreeButton);
 		panel.add(printTreeButton);
 		panel.add(helpButton);
-
-		//create the tree
-		familyTree = new FamilyTree();
-		addFamilyMembersToTree(familyTree);
-		JTree tree = familyTree.tree;
-		//tree.setPreferredSize(new Dimension(300,50));
-		JScrollPane scrollPane = new JScrollPane(tree);
-		scrollPane.setPreferredSize(new Dimension(200,200));
-		add(scrollPane,BorderLayout.CENTER);
-		//add(tree, BorderLayout.CENTER);
 		add(panel,BorderLayout.NORTH);
 		// Implementation of the proper actions on the respective button being clicked.
 		addPersonButton.addMouseListener(new MouseAdapter() {
+			@Override
 			/**
 			 * Used to detect a mouse click on addPersonButton and calls the addPersonButtonPressed.
 			 * @param e Detected mouse operation.
@@ -64,12 +58,13 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 			 * Button has been pressed, add person to the family tree.
 			 * @param e Detected mouse operation.
 			 */
+
 			public void addPersonButtonPressed(MouseEvent e) {
-				int row = familyTree.tree.getRowForLocation(e.getX(), e.getY());
-				TreePath path = familyTree.tree.getPathForLocation(e.getX(), e.getY());
+				int row = tree.getRowForLocation(e.getX(), e.getY());
+				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
-						familyTree.tree.startEditingAtPath(path);
+						tree.startEditingAtPath(path);
 
 					}
 				}
@@ -89,13 +84,13 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 			 * @param e Detected mouse operation.
 			 */
 			private void removePersonButtonPressed(MouseEvent e) {
-				familyTree.removeMember();
+				tree.removeMember();
 				
 				// Old remove member code.
 				
-				/*int row = familyTree.tree.getRowForLocation(e.getX(), e.getY());
-				DefaultTreeModel model = (DefaultTreeModel) familyTree.tree.getModel();
-				TreePath path = familyTree.tree.getPathForLocation(e.getX(), e.getY());
+				/*int row = tree.tree.getRowForLocation(e.getX(), e.getY());
+				DefaultTreeModel model = (DefaultTreeModel) tree.tree.getModel();
+				TreePath path = tree.tree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
 						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
@@ -120,7 +115,7 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 			 * @param e Detected mouse operation.
 			 */
 			private void deleteTreeButtonPressed(MouseEvent e){
-				familyTree.deleteTree();
+				tree.deleteTree();
 			}
 		});
 		printTreeButton.addMouseListener(new MouseAdapter() {
@@ -176,9 +171,9 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 				// CREATE CODE TO PASS MEMBER BEING EDITED TO AND CALL EditGUI CONSTRUCTOR
 				
 				
-				int row = familyTree.tree.getRowForLocation(e.getX(), e.getY());
-				DefaultTreeModel model = (DefaultTreeModel) familyTree.tree.getModel();
-				TreePath path = familyTree.tree.getPathForLocation(e.getX(), e.getY());
+				int row = tree.getRowForLocation(e.getX(), e.getY());
+				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
 						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();

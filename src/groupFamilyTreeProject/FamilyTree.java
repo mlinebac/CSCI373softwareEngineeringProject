@@ -57,7 +57,9 @@ public class FamilyTree extends JTree {
 			node = (DefaultMutableTreeNode)(node.getChildAt(index));
 			System.out.println("Node editing complete: " + node.getUserObject());
 		}
-		public void treeNodesInserted(TreeModelEvent e){}
+		public void treeNodesInserted(TreeModelEvent e){
+
+		}
 		public void treeNodesRemoved(TreeModelEvent e){}
 		public void treeStructureChanged(TreeModelEvent e){}
 	}
