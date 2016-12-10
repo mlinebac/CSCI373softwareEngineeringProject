@@ -13,6 +13,19 @@ import javax.swing.text.*;
 
 
 public class EditGUI extends JPanel implements ActionListener{
+<<<<<<< HEAD
+=======
+	private String[] nameText = {"Name",
+	private String birthDateText = "Birth Date";
+	private String birthPlaceText = "Birth Place";
+	private String deathDateText = "Death Date";
+	private String deathPlaceText = "Death Place";
+	private String parentText = "Other Parent";
+	private String spouse1Text = "First Spouse";
+	private String spouse2Text = "Second Spouse";
+	private String occupationText = "Occupation";
+
+>>>>>>> branch 'master' of https://github.com/mlinebac/CSCI373softwareEngineeringProject.git
 	private MemberInfo tempMember;
 	private String[] boxText = {"Birth Date", "Birth Place", "Death Date", "Death Place", "Other Parent", "First Spouse", "Second Spouse", "Occupation"};
 	public  void createEditWindow(MemberInfo member){
@@ -100,7 +113,6 @@ public class EditGUI extends JPanel implements ActionListener{
 		}
 	}
 	public MemberInfo doEverything(MemberInfo member){
-		
 		return this.tempMember;
 	}
-}
+
