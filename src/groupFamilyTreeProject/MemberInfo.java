@@ -15,7 +15,7 @@ package groupFamilyTreeProject;
 
 public class MemberInfo{
 	
-	protected String name; // First and last name.
+	protected String name; // First, middle(if applicable) and last name.
 	protected String birthDate; // mm/dd/yyyy
 	protected String placeOfBirth; 
 	protected String deathDate; // mm/dd/yyyy

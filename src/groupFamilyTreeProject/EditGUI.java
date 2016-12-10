@@ -5,6 +5,13 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.text.*;
 
+/**
+ * 
+ * @author bosto
+ *
+ */
+
+
 public class EditGUI extends JPanel implements ActionListener{
 /*	private String[] nameText = {"Name", 
 			private String birthDateText = "Birth Date";
