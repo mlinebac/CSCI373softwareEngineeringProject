@@ -10,7 +10,7 @@ package groupFamilyTreeProject;
  * left side of the GUI.
  * 
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
- * @version 12/6/16
+ * @version 12/10/16
  */
 
 public class MemberInfo{

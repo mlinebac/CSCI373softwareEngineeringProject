@@ -7,7 +7,7 @@ import javax.swing.text.*;
 
 /**
  * 
- * @author bosto
+ * @author Ryan Fairbanks
  *
  */
 
