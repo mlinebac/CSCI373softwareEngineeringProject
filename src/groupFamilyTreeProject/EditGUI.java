@@ -11,7 +11,7 @@ import javax.swing.text.*;
  *
  */
 
-
+/*
 public class EditGUI extends JPanel implements ActionListener{
 
 
@@ -105,3 +105,4 @@ public class EditGUI extends JPanel implements ActionListener{
 		return this.tempMember;
 	}
 
+*/

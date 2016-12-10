@@ -45,8 +45,11 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 		familyTree = new FamilyTree();
 		addFamilyMembersToTree(familyTree);
 		JTree tree = familyTree.tree;
-		tree.setPreferredSize(new Dimension(300,50));
-		add(tree, BorderLayout.CENTER);
+		//tree.setPreferredSize(new Dimension(300,50));
+		JScrollPane scrollPane = new JScrollPane(tree);
+		scrollPane.setPreferredSize(new Dimension(200,200));
+		add(scrollPane,BorderLayout.CENTER);
+		//add(tree, BorderLayout.CENTER);
 		add(panel,BorderLayout.NORTH);
 		// Implementation of the proper actions on the respective button being clicked.
 		addPersonButton.addMouseListener(new MouseAdapter() {

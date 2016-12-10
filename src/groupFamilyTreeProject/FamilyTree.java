@@ -1,5 +1,6 @@
 package groupFamilyTreeProject;
 
+import java.awt.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,15 +27,22 @@ public class FamilyTree extends JTree {
 
 	public FamilyTree(){
 
-		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
+
+		
+
+		MemberInfo ancestor;
+		ancestor = new MemberInfo("First Known Ancestor");
+>>>>>>> branch 'master' of https://github.com/mlinebac/CSCI373softwareEngineeringProject.git
 		root = new DefaultMutableTreeNode(ancestor);
 		model = new DefaultTreeModel(root);
 		model.addTreeModelListener(new Listener());
 		tree = new JTree(model);
-		// Change when text boxes are added?
+		//Change when text boxes are added?
 		tree.setEditable(true);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
+
+
 
 	}
 	/**
