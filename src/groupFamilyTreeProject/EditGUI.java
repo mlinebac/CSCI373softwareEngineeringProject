@@ -11,10 +11,10 @@ import javax.swing.text.*;
  *
  */
 
-/*
+
 public class EditGUI extends JPanel implements ActionListener{
 
-
+	private JLabel actionLabel;
 	private MemberInfo tempMember;
 	private String[] boxText = {"Birth Date", "Birth Place", "Death Date", "Death Place", "Other Parent", "First Spouse", "Second Spouse", "Occupation"};
 	public  void createEditWindow(MemberInfo member){
@@ -55,10 +55,6 @@ public class EditGUI extends JPanel implements ActionListener{
 		con.anchor = GridBagConstraints.EAST;
 		con.weightx = 1.0;
 		textPane.add(actionLabel, con);
-
-		
-		
-		
 	}
 	public void actionPerformed(ActionEvent e){
 		JTextField entry = (JTextField)e.getSource();
@@ -101,8 +97,4 @@ public class EditGUI extends JPanel implements ActionListener{
 			con.add(fields[i], c);
 		}
 	}
-	public MemberInfo doEverything(MemberInfo member){
-		return this.tempMember;
-	}
-
-*/
+}
