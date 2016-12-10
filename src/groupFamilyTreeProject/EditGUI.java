@@ -14,14 +14,14 @@ import javax.swing.text.*;
 
 public class EditGUI extends JPanel implements ActionListener{
 /*	private String[] nameText = {"Name", 
-			private String birthDateText = "Birth Date";
-			private String birthPlaceText = "Birth Place";
-			private String deathDateText = "Death Date";
-			private String deathPlaceText = "Death Place";
-			private String parentText = "Other Parent";
-			private String spouse1Text = "First Spouse";
-			private String spouse2Text = "Second Spouse";
-			private String occupationText = "Occupation";
+	private String birthDateText = "Birth Date";
+	private String birthPlaceText = "Birth Place";
+	private String deathDateText = "Death Date";
+	private String deathPlaceText = "Death Place";
+	private String parentText = "Other Parent";
+	private String spouse1Text = "First Spouse";
+	private String spouse2Text = "Second Spouse";
+	private String occupationText = "Occupation";
 */	
 	private MemberInfo tempMember;
 	private String[] boxText = {"Birth Date", "Birth Place", "Death Date", "Death Place", "Other Parent", "First Spouse", "Second Spouse", "Occupation"};
@@ -91,7 +91,7 @@ public class EditGUI extends JPanel implements ActionListener{
 		else if(boxText[6].equals(e.getActionCommand())) {
 			tempMember.setSpouse2(entry.getText());
 		}
-		else if(boxText[7].equals(e.getActionCommand())) {
+		else { // Set occupation, only remaining possibility.
 			tempMember.setOccupation(entry.getText());
 		}
 		

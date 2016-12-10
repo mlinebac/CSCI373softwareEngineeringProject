@@ -169,6 +169,10 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 			 * @param e Detected mouse operation.
 			 */
 			private void personClicked(MouseEvent e){
+				
+				// CREATE CODE TO PASS MEMBER BEING EDITED TO AND CALL EditGUI CONSTRUCTOR
+				
+				
 				int row = familyTree.tree.getRowForLocation(e.getX(), e.getY());
 				DefaultTreeModel model = (DefaultTreeModel) familyTree.tree.getModel();
 				TreePath path = familyTree.tree.getPathForLocation(e.getX(), e.getY());
