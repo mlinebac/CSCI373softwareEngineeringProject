@@ -6,17 +6,23 @@ import javax.swing.*;
 import javax.swing.text.*;
 
 /**
+ * CSCI 373: Software Engineering. Term Project. The methods of this class can be called to produce a window that will display the 
+ * GUI for editing the MemberInfo parameters.
+ * 
  * 
  * @author Ryan Fairbanks
- *
+ * @version 12/10/2016
  */
 
 
 public class EditGUI extends JPanel implements ActionListener{
-
 	private JLabel actionLabel;
 	private MemberInfo tempMember;
 	private String[] boxText = {"Birth Date", "Birth Place", "Death Date", "Death Place", "Other Parent", "First Spouse", "Second Spouse", "Occupation"};
+	/*
+	 * Create the window and call method to create the GUI.
+	 * @param member Object of MemberInfo containing the information on the family member clicked.
+	 */
 	public  void createEditWindow(MemberInfo member){
 		// Create new window for editing information on family members.
 		JFrame editFrame = new JFrame("Edit " + member.name);
@@ -30,6 +36,10 @@ public class EditGUI extends JPanel implements ActionListener{
 		editFrame.pack();
 		editFrame.setVisible(true);
 	}
+	/**
+	 * Constructor to create the GUI interface. Creates editable text boxes for each parameter of MemberInfo, aside for name.
+	 * @param member Object of MemberInfo containing the information on the family member clicked.
+	 */
 	public EditGUI(MemberInfo member) {
 		this.tempMember = member;
 		setLayout(new BorderLayout());
@@ -56,6 +66,9 @@ public class EditGUI extends JPanel implements ActionListener{
 		con.weightx = 1.0;
 		textPane.add(actionLabel, con);
 	}
+	/**
+	 * Used to determine which text box was edited and calls the setter for the edited parameter.
+	 */
 	public void actionPerformed(ActionEvent e){
 		JTextField entry = (JTextField)e.getSource();
 		if(boxText[0].equals(e.getActionCommand())) {
@@ -83,6 +96,13 @@ public class EditGUI extends JPanel implements ActionListener{
 			tempMember.setOccupation(entry.getText());
 		}
 	}
+	/**
+	 * Setup the text boxes.
+	 * @param labels
+	 * @param fields
+	 * @param grid
+	 * @param con
+	 */
 	private void addTextRows(JLabel[] labels, JTextField[] fields, GridBagLayout grid, Container con){
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.EAST;
