@@ -1,6 +1,8 @@
 package groupFamilyTreeProject;
 
 import java.awt.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.tree.*;
@@ -18,6 +20,7 @@ public class FamilyTree extends JTree {
 	protected DefaultMutableTreeNode root; // Root of the tree.
 	protected DefaultTreeModel model; // The basis of the family tree.
 	protected JTree tree; // The entirety of the family tree.
+	protected ArrayList<MemberInfo> members = new ArrayList<MemberInfo>();
 	
 
 	public FamilyTree(){
@@ -75,7 +78,11 @@ public class FamilyTree extends JTree {
 	 * Contains functionality for the "Print Tree" button in the GUI.
 	 */
 	public void printTree(){
-		// Code goes here to print the tree.
+		// need to get a filename from the user
+		
+		//create txt file
+		
+		// write to txt file
 	}
 	/**
 	 * Contains functionality for the "Help" button in the GUI.
@@ -114,6 +121,12 @@ public class FamilyTree extends JTree {
 	public DefaultMutableTreeNode add(DefaultMutableTreeNode parent, MemberInfo newChild){
 		//DefaultMutableTreeNode 
 		return null;
+	}
+	
+	public void createMember(String name)
+	{
+		MemberInfo member = new MemberInfo(name);
+		members.add(member);
 	}
 
 /**	@Override
