@@ -1,6 +1,8 @@
 package groupFamilyTreeProject;
 
 import java.awt.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -79,10 +81,31 @@ public class FamilyTree extends JTree {
 	 */
 	public void printTree(){
 		// need to get a filename from the user
+		String fileName = null;
+		MemberInfo[] convertedMembers = (MemberInfo[]) members.toArray();
+		FileWriter writer = null;
+		
+		try
+		{
+			writer = new FileWriter(fileName, true);
+			
+			for(int i = 0; i < convertedMembers.length; i++)
+			{
+				writer.write("Name: " + convertedMembers[i].getName() + ".");
+				writer.write("DOB: " + convertedMembers[i].getBirthDate());
+				writer.write("Birth Place: " + convertedMembers[i].getPlaceOfBirth() + ".");
+				wirter.write("DOD: " + )
+			}
+		}
+		catch(IOException e)
+		{
+			
+		}
 		
 		//create txt file
 		
 		// write to txt file
+		
 	}
 	/**
 	 * Contains functionality for the "Help" button in the GUI.
