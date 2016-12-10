@@ -218,22 +218,7 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 	
 	
 
-	// Incomplete code for left side of the GUI, text fields that can be edited for each family member.
-	/*public FamilyMember FamilyMemberInformation(FamilyMember member){
-		setLayout(new BorderLayout());
-		JTextField nameField = new JTextField(member.getName(), 25); // Name field
-		nameField.setActionCommand(nameText);
-		nameField.addActionListener(this);
-		JTextField birthField = new JTextField(member.getBirthDate(), 25); // Birth date field
-		birthField.setActionCommand(birthText);
-		birthField.addActionListener(this);
-		JTextField deathField = new JTextField(member.getDeathDate(), 25); // Death date field
-		deathField.setActionCommand(deathText);
-		deathField.addActionListener(this);
-		onUse = new JLabel("Enter data");
-		onUse.setBorder(BorderFactory.createEmptyBorder(10,0,0,0));
-	}*/
-	
+
 	/**
 	 * Launch the application.
 	 */

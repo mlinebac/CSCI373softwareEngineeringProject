@@ -62,7 +62,6 @@ public class MemberInfo{
 	}
 	
 	// Getters and setters
-	
 	/**
 	 * Set the date the member was born.
 	 * @param birthDate Date.
@@ -160,6 +159,12 @@ public class MemberInfo{
 	 */
 	public String getParentHidden(){
 		return this.parentHidden;
+	}
+	public String getSpouse1(){
+		return this.spouse1;
+	}
+	public String getSpouse2(){
+		return this.spouse1;
 	}
 	/**
 	 * Returns the occupation of the member.
