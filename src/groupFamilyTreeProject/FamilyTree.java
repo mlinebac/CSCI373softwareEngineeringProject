@@ -115,12 +115,6 @@ public class FamilyTree extends JTree {
 		//DefaultMutableTreeNode 
 		return null;
 	}
-	
-	public void removeMember(String Name, Integer birthDate, String placeOfBirth)
-	{
-		
-	}
-	
 
 /**	@Override
 	public void treeWillExpand(TreeExpansionEvent event) throws ExpandVetoException {
