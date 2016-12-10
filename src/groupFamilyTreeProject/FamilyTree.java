@@ -32,7 +32,6 @@ public class FamilyTree extends JTree {
 
 		MemberInfo ancestor;
 		ancestor = new MemberInfo("First Known Ancestor");
->>>>>>> branch 'master' of https://github.com/mlinebac/CSCI373softwareEngineeringProject.git
 		root = new DefaultMutableTreeNode(ancestor);
 		model = new DefaultTreeModel(root);
 		model.addTreeModelListener(new Listener());
