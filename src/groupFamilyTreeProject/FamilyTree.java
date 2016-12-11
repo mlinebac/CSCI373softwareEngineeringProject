@@ -33,6 +33,9 @@ public class FamilyTree extends JPanel {
 		tree.setEditable(true);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
+		
+		JScrollPane pane = new JScrollPane(tree);
+		add(pane);
 	}
 	/**
 	 * 

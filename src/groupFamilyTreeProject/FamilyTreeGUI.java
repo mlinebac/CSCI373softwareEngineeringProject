@@ -16,7 +16,7 @@ import javax.swing.tree.*;
  * @version 12/11/16
  */
 
-public class FamilyTreeGUI extends JPanel implements ActionListener{
+public class FamilyTreeGUI extends JPanel implements MouseListener{
 
 	private FamilyTree tree;
 
@@ -28,7 +28,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 		//create the tree
 		tree = new FamilyTree();
 		tree.setPreferredSize(new Dimension(300,50));
-		add(tree, BorderLayout.CENTER);
+		
 
 		// Declaration of buttons to be displayed at the top of the GUI.
 		JButton addPersonButton = new JButton("Add Person");
@@ -44,6 +44,7 @@ public class FamilyTreeGUI extends JPanel implements ActionListener{
 		panel.add(printTreeButton);
 		panel.add(helpButton);
 		add(panel,BorderLayout.NORTH);
+		add(tree, BorderLayout.CENTER);
 		// Implementation of the proper actions on the respective button being clicked.
 		addPersonButton.addMouseListener(new MouseAdapter() {
 			@Override
