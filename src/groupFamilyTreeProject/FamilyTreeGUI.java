@@ -13,7 +13,7 @@ import javax.swing.tree.*;
  * person, remove a person, delete the tree, and print the tree to a PDF file.
  * 
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
- * @version 12/10/16
+ * @version 12/11/16
  */
 
 public class FamilyTreeGUI extends JPanel implements ActionListener{

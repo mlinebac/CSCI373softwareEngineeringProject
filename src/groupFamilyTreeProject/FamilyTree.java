@@ -14,7 +14,7 @@ import javax.swing.tree.*;
  * of the family tree.
  * 
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
- * @version 12/2/16
+ * @version 12/11/16
  */
 //testing merge again
 public class FamilyTree extends JPanel {
