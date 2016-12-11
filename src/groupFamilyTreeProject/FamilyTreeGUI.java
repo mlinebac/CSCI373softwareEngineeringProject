@@ -60,14 +60,15 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 			 */
 
 			public void addPersonButtonPressed(MouseEvent e) {
-				int row = tree.getRowForLocation(e.getX(), e.getY());
+				tree.createMember();
+				/*int row = tree.getRowForLocation(e.getX(), e.getY());
 				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
 						tree.startEditingAtPath(path);
 
 					}
-				}
+				}*/
 			}
 		});
 		removePersonButton.addMouseListener(new MouseAdapter() {
@@ -189,9 +190,9 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 
 	private void addFamilyMembersToTree(FamilyTree familyTree) {
 
-		DefaultMutableTreeNode parent;
-		parent = (DefaultMutableTreeNode) familyTree.addTreeNode().getParent();
-		familyTree.add(parent, "parent 1");
+		//DefaultMutableTreeNode parent;
+		//parent = (DefaultMutableTreeNode) familyTree.addTreeNode().getParent();
+		//familyTree.add(parent, "parent 1");
 
 	}
 
