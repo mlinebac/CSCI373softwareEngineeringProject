@@ -24,23 +24,19 @@ public class FamilyTree extends JTree {
 	protected JTree tree; // The entirety of the family tree.
 	protected ArrayList<MemberInfo> members = new ArrayList<MemberInfo>();
 	
-
-
 	public FamilyTree(){
-		MemberInfo ancestor;
-		ancestor = new MemberInfo("First Known Ancestor");
+		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
 		root = new DefaultMutableTreeNode(ancestor);
 		model = new DefaultTreeModel(root);
 		model.addTreeModelListener(new Listener());
 		tree = new JTree(model);
-		//Change when text boxes are added?
 		tree.setEditable(true);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
 	}
 	/**
 	 * 
-	 * @author bosto
+	 * @author Ryan Fairbanks
 	 * @version 12/6/16
 	 */
 	class Listener implements TreeModelListener{
@@ -51,9 +47,7 @@ public class FamilyTree extends JTree {
 			node = (DefaultMutableTreeNode)(node.getChildAt(index));
 			System.out.println("Node editing complete: " + node.getUserObject());
 		}
-		public void treeNodesInserted(TreeModelEvent e){
-
-		}
+		public void treeNodesInserted(TreeModelEvent e){}
 		public void treeNodesRemoved(TreeModelEvent e){}
 		public void treeStructureChanged(TreeModelEvent e){}
 	}
@@ -114,14 +108,25 @@ public class FamilyTree extends JTree {
 	public void help(){
 		// Code to respond to user's need for help goes here.
 	}
-	/**
-	 * Does not have functionality at the moment...
-	 * 
-	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/tree/TreeNode.html
-	 * https://docs.oracle.com/javase/7/docs/api/javax/swing/tree/DefaultMutableTreeNode.html
-	 * @return
-	 */
-	public TreeNode addTreeNode(){
+	
+	public DefaultMutableTreeNode add(MemberInfo newMember){
+		DefaultMutableTreeNode parent = null;
+		TreePath path = tree.getSelectionPath();
+		if(path == null) parent = root;
+		else parent = (DefaultMutableTreeNode)(path.getLastPathComponent());
+		return add(parent, newMember, true);
+	}
+	public DefaultMutableTreeNode add(DefaultMutableTreeNode parent, MemberInfo newMember){
+		return add(parent, newMember, false);
+	}
+	public DefaultMutableTreeNode add(DefaultMutableTreeNode parent, MemberInfo newMember, boolean visible){
+		DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newMember);
+		if(parent == null) parent = root;
+		model.insertNodeInto(newNode, parent, parent.getChildCount());
+		if(visible) tree.scrollPathToVisible(new TreePath(newNode.getPath()));
+		return newNode;
+	}
+/*	public TreeNode addTreeNode(){
 		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
 		MemberInfo ancestorChild = new MemberInfo("Ancestor's Child");
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode(ancestor);
@@ -133,7 +138,7 @@ public class FamilyTree extends JTree {
 	/*
 	 * Add a child to the selected node.
 	 */
-	public DefaultMutableTreeNode add(DefaultMutableTreeNode root, String parentName){
+/*	public DefaultMutableTreeNode add(DefaultMutableTreeNode root, String parentName){
 		MemberInfo newChild = new MemberInfo(); // Default value for new node.
 		DefaultMutableTreeNode parent;
 		TreePath parentPath = tree.getSelectionPath();
