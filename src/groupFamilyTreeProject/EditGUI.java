@@ -117,4 +117,8 @@ public class EditGUI extends JPanel implements ActionListener{
 			con.add(fields[i], c);
 		}
 	}
+	public static void main(String[] args){
+		MemberInfo name = new MemberInfo("Try this");
+		javax.swing.SwingUtilities.invokeLater(() -> EditGUI.createEditWindow(name));
+	}
 }
