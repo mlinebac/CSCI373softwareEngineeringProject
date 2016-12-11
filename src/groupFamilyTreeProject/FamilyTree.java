@@ -134,4 +134,8 @@ public class FamilyTree extends JPanel {
 		MemberInfo member = new MemberInfo(name);
 		addObj(member);
 	}
+	public MemberInfo getMemberInfo(){
+		DefaultMutableTreeNode current = (DefaultMutableTreeNode)tree.getSelectionPath().getLastPathComponent();
+		return (MemberInfo)current.getUserObject();
+	}
 }

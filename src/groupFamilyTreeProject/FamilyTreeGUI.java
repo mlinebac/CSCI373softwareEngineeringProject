@@ -41,92 +41,55 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 		panel.add(printTreeButton);
 		panel.add(helpButton);
 		add(panel,BorderLayout.NORTH);
-		add(tree, BorderLayout.CENTER);
+		add(tree, BorderLayout.WEST);
 		// Implementation of the proper actions on the respective button being clicked.
 		addPersonButton.addMouseListener(new MouseAdapter() {
 			@Override
 			/**
-			 * Used to detect a mouse click on addPersonButton and calls the addPersonButtonPressed.
+			 * Used to detect a mouse click on addPersonButton and calls another method in FamilyTree to add the member.
 			 * @param e Detected mouse operation.
 			 */
 			public void mouseClicked(MouseEvent e) {
-				addPersonButtonPressed();
-			}
-			/**
-			 * Button has been pressed, add person to the family tree.
-			 *
-			 */
-
-			public void addPersonButtonPressed() {
 				tree.createMember();
 			}
 		});
 		removePersonButton.addMouseListener(new MouseAdapter() {
 			@Override
 			/**
-			 * Used to detect a mouse click on removePersonButton and calls removePersonButtonPressed.
+			 * Used to detect a mouse click on removePersonButton and calls another method in FamilyTree to remove the member.
 			 * @param e Detected mouse operation.
 			 */
 			public void mouseClicked(MouseEvent e) {
-				removePersonButtonPressed();
-			}
-			/**
-			 * Button has been pressed, remove clicked person from family tree (and thus their descendants).
-			 *
-			 */
-			private void removePersonButtonPressed() {
 				tree.removeMember();
-
 			}
 		});
 		deleteTreeButton.addMouseListener(new MouseAdapter(){
 			@Override
 			/**
-			 * Used to detect a mouse click on deleteTreeButton and calls deleteTreeButtonPressed.
+			 * Used to detect a mouse click on deleteTreeButton and calls another method in FamilyTree to delete the tree.
 			 * @param e Detected mouse operation.
 			 */
 			public void mouseClicked(MouseEvent e){
-				deleteTreeButtonPressed();
-			}
-			/**
-			 * Button has been pressed, delete the existing family tree.
-			 *
-			 */
-			private void deleteTreeButtonPressed(){
 				tree.deleteTree();
 			}
 		});
 		printTreeButton.addMouseListener(new MouseAdapter() {
 			@Override
 			/**
-			 * Used to detect a mouse click on printTreeButton and calls printTreeButtonPressed.
+			 * Used to detect a mouse click on printTreeButton and calls another method in FamilyTree to print the tree.
 			 * @param e Detected mouse operation.
 			 */
 			public void mouseClicked(MouseEvent e){
-				printTreeButtonPressed();
-			}
-			/**
-			 * Button has been pressed, output the existing family tree to a PDF file within the base folder.
-			 *
-			 */
-			private void printTreeButtonPressed(){
-				// INSERT CODE TO PRINT THE TREE DIAGRAM HERE
+				tree.printTree();
 			}
 		});
 		helpButton.addMouseListener(new MouseAdapter() {
 			@Override
 			/**
-			 * Used to detect a mouse click on helpButton and calls helpButtonPressed.
+			 * Used to detect a mouse click on helpButton and performs appropriate action.
 			 * @param e Detected mouse operation.
 			 */
 			public void mouseClicked(MouseEvent e){
-				helpButtonPressed();
-			}
-			/**
-			 * Button has been pressed, bring up help options.
-			 *
-			 */
-			private void helpButtonPressed(){
 				// INSERT CODE TO PERFORM HELP OPERATION
 			}
 		});
@@ -138,13 +101,10 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 			 * @param e Detected mouse operation.
 			 */
 			public void mouseClicked(MouseEvent e){
-				personClicked();
-			}
-
-			private void personClicked(){
-				
 				// CREATE CODE TO PASS MEMBER BEING EDITED TO AND CALL EditGUI CONSTRUCTOR
-				}
+				MemberInfo editMember = tree.getMemberInfo();
+				javax.swing.SwingUtilities.invokeLater(() -> EditGUI.createEditWindow(editMember));
+			}
 		});
 	}
 	/**

@@ -23,7 +23,7 @@ public class EditGUI extends JPanel implements ActionListener{
 	 * Create the window and call method to create the GUI.
 	 * @param member Object of MemberInfo containing the information on the family member clicked.
 	 */
-	public  void createEditWindow(MemberInfo member){
+	public static void createEditWindow(MemberInfo member){
 		// Create new window for editing information on family members.
 		JFrame editFrame = new JFrame("Edit " + member.name);
 		editFrame.setBounds(300,300,600,600);
