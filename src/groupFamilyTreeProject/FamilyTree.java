@@ -17,12 +17,12 @@ import javax.swing.tree.*;
  * @version 12/2/16
  */
 //testing merge again
-public class FamilyTree extends JTree {
+public class FamilyTree extends JPanel {
 	
 	protected DefaultMutableTreeNode root; // Root of the tree.
 	protected DefaultTreeModel model; // The basis of the family tree.
 	protected JTree tree; // The entirety of the family tree.
-	protected ArrayList<MemberInfo> members = new ArrayList<MemberInfo>();
+	//protected ArrayList<MemberInfo> members = new ArrayList<MemberInfo>();
 	
 	public FamilyTree(){
 		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
@@ -76,7 +76,7 @@ public class FamilyTree extends JTree {
 	 */
 	public void printTree(){
 		// need to get a filename from the user
-		String fileName = null;
+/*		String fileName = null;
 		MemberInfo[] convertedMembers = (MemberInfo[]) members.toArray();
 		FileWriter writer = null;
 		
@@ -100,7 +100,7 @@ public class FamilyTree extends JTree {
 		catch(IOException e)
 		{
 			// needs message and a way to start over.
-		}
+		}*/
 	}
 	/**
 	 * Contains functionality for the "Help" button in the GUI.
@@ -109,17 +109,17 @@ public class FamilyTree extends JTree {
 		// Code to respond to user's need for help goes here.
 	}
 	
-	public DefaultMutableTreeNode add(MemberInfo newMember){
+	public DefaultMutableTreeNode addObj(MemberInfo newMember){
 		DefaultMutableTreeNode parent = null;
 		TreePath path = tree.getSelectionPath();
 		if(path == null) parent = root;
 		else parent = (DefaultMutableTreeNode)(path.getLastPathComponent());
-		return add(parent, newMember, true);
+		return addObj(parent, newMember, true);
 	}
-	public DefaultMutableTreeNode add(DefaultMutableTreeNode parent, MemberInfo newMember){
-		return add(parent, newMember, false);
+	public DefaultMutableTreeNode addObj(DefaultMutableTreeNode parent, MemberInfo newMember){
+		return addObj(parent, newMember, false);
 	}
-	public DefaultMutableTreeNode add(DefaultMutableTreeNode parent, MemberInfo newMember, boolean visible){
+	public DefaultMutableTreeNode addObj(DefaultMutableTreeNode parent, MemberInfo newMember, boolean visible){
 		DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newMember);
 		if(parent == null) parent = root;
 		model.insertNodeInto(newNode, parent, parent.getChildCount());
@@ -156,10 +156,14 @@ public class FamilyTree extends JTree {
 	 * needs to be called in the add methods so an instance 
 	 * of the MemberInfo class is created
 	 */
-	public void createMember(String name)
-	{
+
+	public void createMember(){
+		MemberInfo member = new MemberInfo("New Member");
+		addObj(member);
+	}
+	public void createMember(String name){
 		MemberInfo member = new MemberInfo(name);
-		members.add(member);
+		addObj(member);
 	}
 
 /*	@Override
