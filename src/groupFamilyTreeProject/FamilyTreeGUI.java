@@ -3,9 +3,6 @@ package groupFamilyTreeProject;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.TreeSelectionEvent;
-import javax.swing.event.TreeSelectionListener;
-import javax.swing.tree.*;
 
 /**
  * CSCI 373: Software Engineering. Term Project. The purpose of this class is to create a graphic user interface. Through this 
@@ -62,14 +59,6 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 
 			public void addPersonButtonPressed(MouseEvent e) {
 				tree.createMember();
-				/*int row = tree.getRowForLocation(e.getX(), e.getY());
-				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
-				if (row != -1) {
-					if (e.getClickCount() == 1) {
-						tree.startEditingAtPath(path);
-
-					}
-				}*/
 			}
 		});
 		removePersonButton.addMouseListener(new MouseAdapter() {
@@ -87,20 +76,7 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 			 */
 			private void removePersonButtonPressed(MouseEvent e) {
 				tree.removeMember();
-				
-				// Old remove member code.
-				
-				/*int row = tree.tree.getRowForLocation(e.getX(), e.getY());
-				DefaultTreeModel model = (DefaultTreeModel) tree.tree.getModel();
-				TreePath path = tree.tree.getPathForLocation(e.getX(), e.getY());
-				if (row != -1) {
-					if (e.getClickCount() == 1) {
-						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
-						if (node.getParent() != null) {
-							model.removeNodeFromParent(node);
-						}
-					}
-				}*/
+
 			}
 		});
 		deleteTreeButton.addMouseListener(new MouseAdapter(){
@@ -171,27 +147,9 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 			private void personClicked(MouseEvent e){
 				
 				// CREATE CODE TO PASS MEMBER BEING EDITED TO AND CALL EditGUI CONSTRUCTOR
-				
-				int row = 1;
-				//int row = tree.getRowForLocation(e.getX(), e.getY());
-				//DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
-				//TreePath path = tree.getPathForLocation(e.getX(), e.getY());
-				if (row != -1) {
-					if (e.getClickCount() == 1) {
-						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
-						if (node.getParent() != null) {
-							//?????????????????		
-							}
-						}
-					}
-					panel.getComponentAt(e.getX(), e.getY());
 				}
 		});
 	}
-
-
-
-
 	/**
 	 * Initialize size, closing, panes, and other features of the frame for the GUI (window).
 	 */
@@ -208,16 +166,29 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 		frame.pack();
 		frame.setVisible(true);
 	}
-		
-		
-	public void MouseClicked (MouseEvent e){
-		
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+
 	}
-	
 
+	@Override
+	public void mousePressed(MouseEvent e) {
 
-    @Override
-    public void valueChanged(TreeSelectionEvent e) {
+	}
 
-    }
+	@Override
+	public void mouseReleased(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+
+	}
+
+	@Override
+    public void mouseExited(MouseEvent e){
+
+	}
 }
