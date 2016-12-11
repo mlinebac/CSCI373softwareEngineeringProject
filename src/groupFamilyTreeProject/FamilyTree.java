@@ -16,13 +16,11 @@ import javax.swing.tree.*;
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
  * @version 12/11/16
  */
-//testing merge again
 public class FamilyTree extends JPanel {
 	
 	protected DefaultMutableTreeNode root; // Root of the tree.
 	protected DefaultTreeModel model; // The basis of the family tree.
 	protected JTree tree; // The entirety of the family tree.
-	//protected ArrayList<MemberInfo> members = new ArrayList<MemberInfo>();
 	
 	public FamilyTree(){
 		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
@@ -33,7 +31,6 @@ public class FamilyTree extends JPanel {
 		tree.setEditable(true);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
-		
 		JScrollPane pane = new JScrollPane(tree);
 		add(pane);
 	}
@@ -111,7 +108,11 @@ public class FamilyTree extends JPanel {
 	public void help(){
 		// Code to respond to user's need for help goes here.
 	}
-	
+	/**
+	 * Called from createMember methods to create the actual node using the MemberInfo object.
+	 * @param newMember Information of the new member.
+	 * @return New node containing the information of the new member.
+	 */
 	public DefaultMutableTreeNode addObj(MemberInfo newMember){
 		DefaultMutableTreeNode parent = null;
 		TreePath path = tree.getSelectionPath();
@@ -123,55 +124,19 @@ public class FamilyTree extends JPanel {
 		tree.scrollPathToVisible(new TreePath(newNode.getPath()));
 		return newNode;
 	}
-/*	public TreeNode addTreeNode(){
-		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
-		MemberInfo ancestorChild = new MemberInfo("Ancestor's Child");
-		DefaultMutableTreeNode root = new DefaultMutableTreeNode(ancestor);
-		DefaultMutableTreeNode rootChild = new DefaultMutableTreeNode(ancestorChild);
-		root.add(rootChild);
-		return root;
-	}
-	
-	/*
-	 * Add a child to the selected node.
+	/**
+	 * Create a default new member, user made.
 	 */
-/*	public DefaultMutableTreeNode add(DefaultMutableTreeNode root, String parentName){
-		MemberInfo newChild = new MemberInfo(); // Default value for new node.
-		DefaultMutableTreeNode parent;
-		TreePath parentPath = tree.getSelectionPath();
-		if(parentPath == null) parent = root;
-		else parent = (DefaultMutableTreeNode)(parentPath.getLastPathComponent());
-		return add(parent, newChild);
-	}
-	
-	public DefaultMutableTreeNode add(DefaultMutableTreeNode parent, MemberInfo newChild){
-		//DefaultMutableTreeNode 
-		return null;
-	}
-	
-	/* 
-	 * needs to be called in the add methods so an instance 
-	 * of the MemberInfo class is created
-	 */
-
 	public void createMember(){
 		MemberInfo member = new MemberInfo("New Member");
 		addObj(member);
 	}
+	/**
+	 * Create a new member, called from the method to produce a default tree.
+	 * @param name Name of the person.
+	 */
 	public void createMember(String name){
 		MemberInfo member = new MemberInfo(name);
 		addObj(member);
 	}
-
-/*	@Override
-	public void treeWillExpand(TreeExpansionEvent event) throws ExpandVetoException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void treeWillCollapse(TreeExpansionEvent event) throws ExpandVetoException {
-		// TODO Auto-generated method stub
-		
-	}*/
 }
