@@ -114,16 +114,10 @@ public class FamilyTree extends JPanel {
 		TreePath path = tree.getSelectionPath();
 		if(path == null) parent = root;
 		else parent = (DefaultMutableTreeNode)(path.getLastPathComponent());
-		return addObj(parent, newMember, true);
-	}
-	public DefaultMutableTreeNode addObj(DefaultMutableTreeNode parent, MemberInfo newMember){
-		return addObj(parent, newMember, false);
-	}
-	public DefaultMutableTreeNode addObj(DefaultMutableTreeNode parent, MemberInfo newMember, boolean visible){
 		DefaultMutableTreeNode newNode = new DefaultMutableTreeNode(newMember);
 		if(parent == null) parent = root;
 		model.insertNodeInto(newNode, parent, parent.getChildCount());
-		if(visible) tree.scrollPathToVisible(new TreePath(newNode.getPath()));
+		tree.scrollPathToVisible(new TreePath(newNode.getPath()));
 		return newNode;
 	}
 /*	public TreeNode addTreeNode(){

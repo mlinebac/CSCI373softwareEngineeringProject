@@ -16,7 +16,7 @@ import javax.swing.tree.*;
  * @version 12/10/16
  */
 
-public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
+public class FamilyTreeGUI extends JPanel implements ActionListener{
 
 	private FamilyTree tree;
 
@@ -171,10 +171,10 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 				
 				// CREATE CODE TO PASS MEMBER BEING EDITED TO AND CALL EditGUI CONSTRUCTOR
 				
-				
-				int row = tree.getRowForLocation(e.getX(), e.getY());
-				DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
-				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
+				int row = 1;
+				//int row = tree.getRowForLocation(e.getX(), e.getY());
+				//DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+				//TreePath path = tree.getPathForLocation(e.getX(), e.getY());
 				if (row != -1) {
 					if (e.getClickCount() == 1) {
 						DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
@@ -188,13 +188,7 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 		});
 	}
 
-	private void addFamilyMembersToTree(FamilyTree familyTree) {
 
-		//DefaultMutableTreeNode parent;
-		//parent = (DefaultMutableTreeNode) familyTree.addTreeNode().getParent();
-		//familyTree.add(parent, "parent 1");
-
-	}
 
 
 	/**
