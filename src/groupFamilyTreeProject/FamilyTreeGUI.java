@@ -24,9 +24,6 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 		super(new BorderLayout());
 		//create the tree
 		tree = new FamilyTree();
-		tree.setPreferredSize(new Dimension(300,50));
-		
-
 		// Declaration of buttons to be displayed at the top of the GUI.
 		JButton addPersonButton = new JButton("Add Person");
 		JButton removePersonButton = new JButton("Remove Person");
@@ -41,6 +38,7 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 		panel.add(printTreeButton);
 		panel.add(helpButton);
 		add(panel,BorderLayout.NORTH);
+		tree.setPreferredSize(new Dimension(300,300));
 		add(tree, BorderLayout.WEST);
 		// Implementation of the proper actions on the respective button being clicked.
 		addPersonButton.addMouseListener(new MouseAdapter() {
@@ -103,7 +101,12 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 			public void mouseClicked(MouseEvent e){
 				// CREATE CODE TO PASS MEMBER BEING EDITED TO AND CALL EditGUI CONSTRUCTOR
 				MemberInfo editMember = tree.getMemberInfo();
-				javax.swing.SwingUtilities.invokeLater(() -> EditGUI.createEditWindow(editMember));
+				javax.swing.SwingUtilities.invokeLater(new Runnable(){
+					public void run(){
+						createEditWindow(editMember);
+					}
+				});
+				//javax.swing.SwingUtilities.invokeLater(() -> EditGUI.createEditWindow(editMember));
 			}
 		});
 	}
