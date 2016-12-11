@@ -3,7 +3,7 @@ package groupFamilyTreeProject;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.text.*;
+
 
 /**
  * CSCI 373: Software Engineering. Term Project. The methods of this class can be called to produce a window that will display the 
