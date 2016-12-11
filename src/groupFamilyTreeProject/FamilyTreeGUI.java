@@ -199,7 +199,7 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 	/**
 	 * Initialize size, closing, panes, and other features of the frame for the GUI (window).
 	 */
-	private static void initialize() {
+	protected static void initialize() {
 		// Create the window, set the size/location, and close operation.
 		JFrame frame = new JFrame("Family Tree");
 		frame.setBounds(300,500,600,600);
@@ -218,16 +218,7 @@ public class FamilyTreeGUI extends JPanel implements TreeSelectionListener{
 		
 	}
 	
-	
 
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		
-		javax.swing.SwingUtilities.invokeLater(() -> initialize());
-    }
 
     @Override
     public void valueChanged(TreeSelectionEvent e) {
