@@ -9,6 +9,12 @@ import javax.imageio.*;
 import javax.swing.*;
 
 /*
+ * SOURCE: Rob Camick
+ *  https://tips4java.wordpress.com/2008/10/13/screen-image/
+ *  
+ *  Used with permission.
+ * 
+ * 
  *  Convenience class to create and optionally save to a file a
  *  BufferedImage of an area on the screen. Generally there are
  *  four different scenarios. Create an image of:
@@ -42,6 +48,8 @@ import javax.swing.*;
  *  ScreenImage.createImage( someComponent );
  *
  */
+
+
 public class ScreenGrab 
 {
 	private static List<String> types = Arrays.asList( ImageIO.getWriterFileSuffixes() );
