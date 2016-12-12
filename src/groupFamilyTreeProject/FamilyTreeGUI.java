@@ -103,7 +103,7 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 				MemberInfo editMember = tree.getMemberInfo();
 				javax.swing.SwingUtilities.invokeLater(new Runnable(){
 					public void run(){
-						createEditWindow(editMember);
+						EditGUI.createEditWindow(editMember);
 					}
 				});
 				//javax.swing.SwingUtilities.invokeLater(() -> EditGUI.createEditWindow(editMember));
