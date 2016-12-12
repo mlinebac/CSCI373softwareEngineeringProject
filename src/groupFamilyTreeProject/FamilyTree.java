@@ -76,7 +76,7 @@ public class FamilyTree extends JPanel {
 	 */
 	public void printTree() throws IOException{
 		BufferedImage image = ScreenGrab.createImage(tree);
-		ScreenGrab.writeImage(image, "C:\\Users\\Felicia\\Desktop\\tree.jpg");
+		ScreenGrab.writeImage(image, "tree.jpg");
 		
 	}
 	/**
