@@ -3,7 +3,6 @@ package groupFamilyTreeProject;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
-
 import javax.swing.*;
 
 /**
@@ -12,7 +11,7 @@ import javax.swing.*;
  * person, remove a person, delete the tree, and print the tree to a PDF file.
  * 
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
- * @version 12/11/16
+ * @version 12/12/16
  */
 
 public class FamilyTreeGUI extends JPanel implements MouseListener{
@@ -20,7 +19,7 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 	private FamilyTree tree;
 
 	/**
-	 * Create the application.
+	 * Create the application; the panels and buttons inside the window.
 	 */
 	public FamilyTreeGUI() {
 		super(new BorderLayout());
@@ -31,14 +30,14 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 		JButton removePersonButton = new JButton("Remove Person");
 		JButton deleteTreeButton = new JButton("Delete Tree");
 		JButton printTreeButton = new JButton("Print Tree");
-		JButton helpButton = new JButton("Help");
+		JButton editPersonButton = new JButton("Edit Person");
 		// Add created buttons into the GUI window.
 		JPanel panel = new JPanel (new GridLayout(0,5)); // Creates the area for adding graphical components.
 		panel.add(addPersonButton);
 		panel.add(removePersonButton);
 		panel.add(deleteTreeButton);
 		panel.add(printTreeButton);
-		panel.add(helpButton);
+		panel.add(editPersonButton);
 		add(panel,BorderLayout.NORTH);
 		tree.setPreferredSize(new Dimension(300,300));
 		add(tree, BorderLayout.CENTER);
@@ -88,32 +87,14 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 				}
 			}
 		});
-		helpButton.addMouseListener(new MouseAdapter() {
+		editPersonButton.addMouseListener(new MouseAdapter() {
 			@Override
 			/**
-			 * Used to detect a mouse click on helpButton and performs appropriate action.
+			 * Used to detect a mouse click on editPersonButton and performs appropriate action.
 			 * @param e Detected mouse operation.
 			 */
 			public void mouseClicked(MouseEvent e){
-				// INSERT CODE TO PERFORM HELP OPERATION
-			}
-		});
-
-		// Detect when a person within the family tree has been clicked.
-		panel.addMouseListener(new MouseAdapter(){
-			/**
-			 * Used to detect a mouse click on a person within the family tree.
-			 * @param e Detected mouse operation.
-			 */
-			public void mouseClicked(MouseEvent e){
-				// CREATE CODE TO PASS MEMBER BEING EDITED TO AND CALL EditGUI CONSTRUCTOR
-				MemberInfo editMember = tree.getMemberInfo();
-				javax.swing.SwingUtilities.invokeLater(new Runnable(){
-					public void run(){
-						EditGUI.createEditWindow(editMember);
-					}
-				});
-				//javax.swing.SwingUtilities.invokeLater(() -> EditGUI.createEditWindow(editMember));
+				tree.editPerson();
 			}
 		});
 	}
@@ -133,29 +114,17 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 		frame.pack();
 		frame.setVisible(true);
 	}
-
+	/*
+	 * Unused mouse methods to appease compiler.
+	 */
 	@Override
-	public void mouseClicked(MouseEvent e) {
-
-	}
-
+	public void mouseClicked(MouseEvent arg0) {}
 	@Override
-	public void mousePressed(MouseEvent e) {
-
-	}
-
+	public void mouseEntered(MouseEvent arg0) {}
 	@Override
-	public void mouseReleased(MouseEvent e) {
-
-	}
-
+	public void mouseExited(MouseEvent arg0) {}
 	@Override
-	public void mouseEntered(MouseEvent e) {
-
-	}
-
+	public void mousePressed(MouseEvent arg0) {}
 	@Override
-    public void mouseExited(MouseEvent e){
-
-	}
+	public void mouseReleased(MouseEvent arg0) {}
 }

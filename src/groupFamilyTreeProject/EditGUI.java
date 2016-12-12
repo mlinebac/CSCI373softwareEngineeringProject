@@ -9,11 +9,9 @@ import javax.swing.*;
  * CSCI 373: Software Engineering. Term Project. The methods of this class can be called to produce a window that will display the 
  * GUI for editing the MemberInfo parameters.
  * 
- * 
- * @author Ryan Fairbanks
- * @version 12/10/2016
+ * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
+ * @version 12/12/16
  */
-
 
 public class EditGUI extends JPanel implements ActionListener{
 	private JLabel actionLabel;
@@ -116,9 +114,5 @@ public class EditGUI extends JPanel implements ActionListener{
 			c.weightx = 1.0;
 			con.add(fields[i], c);
 		}
-	}
-	public static void main(String[] args){
-		MemberInfo name = new MemberInfo("Try this");
-		javax.swing.SwingUtilities.invokeLater(() -> EditGUI.createEditWindow(name));
 	}
 }

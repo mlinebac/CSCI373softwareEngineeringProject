@@ -1,12 +1,9 @@
 package groupFamilyTreeProject;
 
 import javax.swing.*;
-
 import java.awt.Dimension;
 import java.awt.image.*;
-import java.io.File;
 import java.io.IOException;
-
 import javax.swing.event.*;
 import javax.swing.tree.*;
 
@@ -15,14 +12,18 @@ import javax.swing.tree.*;
  * of the family tree.
  * 
  * @author Adam McCann, Ryan Fairbanks, Matt Lineback, Felicia Buchanan
- * @version 12/11/16
+ * @version 12/12/16
  */
 public class FamilyTree extends JPanel {
 	
-	protected DefaultMutableTreeNode root; // Root of the tree.
-	protected DefaultTreeModel model; // The basis of the family tree.
-	protected JTree tree; // The entirety of the family tree.
+	protected DefaultMutableTreeNode root; // Root node of the family tree.
+	protected DefaultTreeModel model; // The system of nodes that represent the family tree.
+	protected JTree tree; // Displays model, the family tree.
+	protected Integer fileCount = 0; // Used for the file name.
 	
+	/**
+	 * Constructs the FamilyTree to be displayed in the GUI.
+	 */
 	public FamilyTree(){
 		MemberInfo ancestor = new MemberInfo("First Known Ancestor");
 		root = new DefaultMutableTreeNode(ancestor);
@@ -36,11 +37,7 @@ public class FamilyTree extends JPanel {
 		tree.setPreferredSize(new Dimension(600, 600));
 		add(pane);
 	}
-	/**
-	 * 
-	 * @author Ryan Fairbanks
-	 * @version 12/6/16
-	 */
+	
 	class Listener implements TreeModelListener{
 		public void treeNodesChanged(TreeModelEvent e){
 			DefaultMutableTreeNode node;
@@ -54,7 +51,7 @@ public class FamilyTree extends JPanel {
 		public void treeStructureChanged(TreeModelEvent e){}
 	}
 	/**
-	 * Contains functionality for the "Remove Person" button in the GUI.
+	 * Contains functionality for the "Remove Person" button in the GUI. Deletes the last clicked member from family tree.
 	 */
 	public void removeMember(){
 		TreePath current = tree.getSelectionPath();
@@ -67,26 +64,35 @@ public class FamilyTree extends JPanel {
 		}
 	}
 	/**
-	 * Contains functionality for the "Delete Tree" button in the GUI using existing methods of Javax.
+	 * Contains functionality for the "Delete Tree" button in the GUI using existing methods of Javax. Removes all children and
+	 * reloads the family tree interface.
 	 */
 	public void deleteTree(){
 		root.removeAllChildren();
 		model.reload();
 	}
 	/**
-	 * Contains functionality for the "Print Tree" button in the GUI.
+	 * Contains functionality for the "Print Tree" button in the GUI. Calls methods ScreenGrab to produce a BufferedImage of the 
+	 * family tree. Each created jpeg will be followed by a number after the first one.
 	 * @throws IOException 
 	 */
 	public void printTree() throws IOException{
 		BufferedImage image = ScreenGrab.createImage(tree);
-		ScreenGrab.writeImage(image, "tree.jpg");
-		
+		if(fileCount == 0) ScreenGrab.writeImage(image, "tree.jpg");
+		else ScreenGrab.writeImage(image, "tree" + fileCount + ".jpg");
+		fileCount++;
 	}
 	/**
-	 * Contains functionality for the "Help" button in the GUI.
+	 * Contains functionality for the "Edit Person" button in the GUI. Detects the last clicked person and calls createEditWindow
+	 * with the person node's MemberInfo to produce the edit window.
 	 */
-	public void help(){
-		// Code to respond to user's need for help goes here.
+	public void editPerson(){
+		DefaultMutableTreeNode current = (DefaultMutableTreeNode)tree.getSelectionPath().getLastPathComponent();
+		javax.swing.SwingUtilities.invokeLater(new Runnable(){
+			public void run(){
+				EditGUI.createEditWindow((MemberInfo)current.getUserObject());
+			}
+		});
 	}
 	/**
 	 * Called from createMember methods to create the actual node using the MemberInfo object.
@@ -118,9 +124,5 @@ public class FamilyTree extends JPanel {
 	public void createMember(String name){
 		MemberInfo member = new MemberInfo(name);
 		addObj(member);
-	}
-	public MemberInfo getMemberInfo(){
-		DefaultMutableTreeNode current = (DefaultMutableTreeNode)tree.getSelectionPath().getLastPathComponent();
-		return (MemberInfo)current.getUserObject();
 	}
 }
