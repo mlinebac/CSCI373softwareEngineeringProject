@@ -2,6 +2,8 @@ package groupFamilyTreeProject;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+
 import javax.swing.*;
 
 /**
@@ -78,7 +80,12 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 			 * @param e Detected mouse operation.
 			 */
 			public void mouseClicked(MouseEvent e){
-				tree.printTree();
+				try {
+					tree.printTree();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		helpButton.addMouseListener(new MouseAdapter() {

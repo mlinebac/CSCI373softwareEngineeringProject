@@ -1,6 +1,10 @@
 package groupFamilyTreeProject;
 
 import javax.swing.*;
+import java.awt.image.*;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.event.*;
 import javax.swing.tree.*;
 
@@ -68,34 +72,12 @@ public class FamilyTree extends JPanel {
 	}
 	/**
 	 * Contains functionality for the "Print Tree" button in the GUI.
+	 * @throws IOException 
 	 */
-	public void printTree(){
-		// need to get a filename from the user
-/*		String fileName = null;
-		MemberInfo[] convertedMembers = (MemberInfo[]) members.toArray();
-		FileWriter writer = null;
+	public void printTree() throws IOException{
+		BufferedImage image = ScreenGrab.createImage(tree);
+		ScreenGrab.writeImage(image, "C:\\Users\\Felicia\\Desktop\\tree.jpg");
 		
-		try
-		{
-			writer = new FileWriter(fileName, true);
-			
-			for(int i = 0; i < convertedMembers.length; i++)
-			{
-				writer.write("Name: " + convertedMembers[i].getName() + ".");
-				writer.write("DOB: " + convertedMembers[i].getBirthDate());
-				writer.write("Birth Place: " + convertedMembers[i].getPlaceOfBirth() + ".");
-				writer.write("DOD: " + convertedMembers[i].getDeathDate() + ".");
-				writer.write("Place of Death: " + convertedMembers[i].getPlaceOfDeath() + ".");
-				writer.write("Occupation " + convertedMembers[i].getOccupation() + ".");
-				writer.write("\n");
-			}
-			
-			writer.close();
-		}
-		catch(IOException e)
-		{
-			// needs message and a way to start over.
-		}*/
 	}
 	/**
 	 * Contains functionality for the "Help" button in the GUI.
