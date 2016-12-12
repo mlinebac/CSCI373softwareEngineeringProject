@@ -41,7 +41,7 @@ public class FamilyTreeGUI extends JPanel implements MouseListener{
 		panel.add(helpButton);
 		add(panel,BorderLayout.NORTH);
 		tree.setPreferredSize(new Dimension(300,300));
-		add(tree, BorderLayout.WEST);
+		add(tree, BorderLayout.CENTER);
 		// Implementation of the proper actions on the respective button being clicked.
 		addPersonButton.addMouseListener(new MouseAdapter() {
 			@Override

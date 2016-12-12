@@ -1,6 +1,8 @@
 package groupFamilyTreeProject;
 
 import javax.swing.*;
+
+import java.awt.Dimension;
 import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
@@ -31,6 +33,7 @@ public class FamilyTree extends JPanel {
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setShowsRootHandles(true);
 		JScrollPane pane = new JScrollPane(tree);
+		tree.setPreferredSize(new Dimension(600, 600));
 		add(pane);
 	}
 	/**
