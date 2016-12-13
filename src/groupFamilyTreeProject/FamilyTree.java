@@ -57,7 +57,7 @@ public class FamilyTree extends JPanel {
 		TreePath current = tree.getSelectionPath();
 		if(current != null){ // Current family member exists in the family tree.
 			DefaultMutableTreeNode tempNode = (DefaultMutableTreeNode)(current.getLastPathComponent());
-			MutableTreeNode parent = (MutableTreeNode)(tempNode.getParent());
+			DefaultMutableTreeNode parent = (DefaultMutableTreeNode)(tempNode.getParent());
 			if(parent != null){ // Current member has an existing parent in the family tree.
 				model.removeNodeFromParent(tempNode); // Delete the designated member.
 			}
@@ -87,12 +87,15 @@ public class FamilyTree extends JPanel {
 	 * with the person node's MemberInfo to produce the edit window.
 	 */
 	public void editPerson(){
-		DefaultMutableTreeNode current = (DefaultMutableTreeNode)tree.getSelectionPath().getLastPathComponent();
-		javax.swing.SwingUtilities.invokeLater(new Runnable(){
-			public void run(){
-				EditGUI.createEditWindow((MemberInfo)current.getUserObject());
-			}
-		});
+		//DefaultMutableTreeNode current = (DefaultMutableTreeNode)tree.getSelectionPath().getLastPathComponent();
+		MemberInfo currentMember = /*(MemberInfo)current.getUserObject()*/ new MemberInfo("Test Member");
+		if(currentMember != null){
+			javax.swing.SwingUtilities.invokeLater(new Runnable(){
+				public void run(){
+					EditGUI.createEditWindow(currentMember);
+				}
+			});
+		}
 	}
 	/**
 	 * Called from createMember methods to create the actual node using the MemberInfo object.

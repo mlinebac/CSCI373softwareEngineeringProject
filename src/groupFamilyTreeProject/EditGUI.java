@@ -25,12 +25,12 @@ public class EditGUI extends JPanel implements ActionListener{
 		// Create new window for editing information on family members.
 		JFrame editFrame = new JFrame("Edit " + member.name);
 		editFrame.setBounds(300,300,600,600);
-		editFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// Create and set up the content pane.
 		EditGUI paneForEdit = new EditGUI(member);
 		paneForEdit.setOpaque(true);
 		editFrame.setContentPane(paneForEdit);
 		// Display the window.
+		editFrame.setPreferredSize(new Dimension(300, 300));
 		editFrame.pack();
 		editFrame.setVisible(true);
 	}
@@ -58,11 +58,12 @@ public class EditGUI extends JPanel implements ActionListener{
 		GridBagLayout grid = new GridBagLayout();
 		GridBagConstraints con = new GridBagConstraints();
 		textPane.setLayout(grid);
+		textPane.setPreferredSize(new Dimension(300, 300));
 		addTextRows(labels, fields, grid, textPane);
 		con.gridwidth = GridBagConstraints.REMAINDER;
 		con.anchor = GridBagConstraints.EAST;
 		con.weightx = 1.0;
-		textPane.add(actionLabel, con);
+		//textPane.add(actionLabel, con);
 	}
 	/**
 	 * Used to determine which text box was edited and calls the setter for the edited parameter.
@@ -108,11 +109,11 @@ public class EditGUI extends JPanel implements ActionListener{
 			c.gridwidth = GridBagConstraints.RELATIVE;
 			c.fill = GridBagConstraints.NONE;	
 			c.weightx = 0.0;
-			con.add(labels[i], c);
+			//con.add(labels[i], c);
 			c.gridwidth = GridBagConstraints.REMAINDER;
 			c.fill = GridBagConstraints.HORIZONTAL;
 			c.weightx = 1.0;
-			con.add(fields[i], c);
+			//con.add(fields[i], c);
 		}
 	}
 }
